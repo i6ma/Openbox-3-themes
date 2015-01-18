@@ -1,0 +1,3987 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- http://openbox.org/wiki/Help:Themes -->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh" lang="zh" dir="ltr">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<meta name="generator" content="MediaWiki 1.19.14+dfsg-1" />
+<link rel="shortcut icon" href="http://openbox.org/favicon.ico" />
+<link rel="search" type="application/opensearchdescription+xml" href="http://openbox.org/oldwiki/opensearch_desc.php" title="Openbox (en)" />
+<link rel="alternate" type="application/atom+xml" title="Openbox Atom feed" href="http://openbox.org/oldwiki/index.php?title=Special:RecentChanges&amp;feed=atom" />		<title>Help:Themes - Openbox</title>
+	</head>
+<body  class="mediawiki  ltr ns-12 ns-subject page-Help_Themes">
+	<div id="globalWrapper">
+		<div id="column-content">
+	<div id="content">
+		<a name="top" id="top"></a>
+				<h1 class="firstHeading">帮助:主题</h1>
+		<div id="bodyContent">
+			<h3 id="siteSub">From Openbox</h3>
+			<div id="contentSub"></div>
+									<div id="jump-to-nav">Jump to: <a href="#column-one">navigation</a>, <a href="#searchInput">search</a></div>			<!-- start content -->
+			<div id="mw-content-text" lang="zh-cn" dir="ltr" class="mw-content-ltr">
+<p>此为<b>非官方</b>文档，机器化的翻译可能没有保持原文原意，建议您去阅读<a href="http://openbox.org/wiki/Help:Themes">官方原文</a>。</p>
+<p>Openbox 3 主题，是一种 X 资源数据包，其文件名为 <code>themerc</code>。文件格式很简单，但提供了非常丰富的配置项，总能满足挑剔的你。</p>
+<p>每个配置项，及其默认值和取值范围，都有详细的说明。下面有一个简单的范例，相关链接都可以点击查看详情。</p>
+
+<table id="toc" class="toc"><tr><td><div id="toctitle"><h2>目录</h2></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="#Theme_installation"><span class="tocnumber">1</span> <span class="toctext">主题安装路径</span></a></li>
+<li class="toclevel-1 tocsection-2"><a href="#Theme_selection"><span class="tocnumber">2</span> <span class="toctext">主题选择与切换</span></a></li>
+<li class="toclevel-1 tocsection-3"><a href="#Theme_file_structure"><span class="tocnumber">3</span> <span class="toctext">主题文件结构</span></a></li>
+<li class="toclevel-1 tocsection-4"><a href="#Example"><span class="tocnumber">4</span> <span class="toctext">主题范例</span></a></li>
+<li class="toclevel-1 tocsection-5"><a href="#Data_types"><span class="tocnumber">5</span> <span class="toctext">数据类型名词解释</span></a>
+<ul>
+<li class="toclevel-2 tocsection-6"><a href="#Integers"><span class="tocnumber">5.1</span> <span class="toctext">整数型</span></a></li>
+<li class="toclevel-2 tocsection-7"><a href="#Justification"><span class="tocnumber">5.2</span> <span class="toctext">对齐方式</span></a></li>
+<li class="toclevel-2 tocsection-8"><a href="#Textures"><span class="tocnumber">5.3</span> <span class="toctext">纹理</span></a>
+<ul>
+<li class="toclevel-3 tocsection-9"><a href="#Parentrelative"><span class="tocnumber">5.3.1</span> <span class="toctext">继承</span></a></li>
+<li class="toclevel-3 tocsection-10"><a href="#Solid"><span class="tocnumber">5.3.2</span> <span class="toctext">均匀填充</span></a></li>
+<li class="toclevel-3 tocsection-11"><a href="#Gradients"><span class="tocnumber">5.3.3</span> <span class="toctext">渐变填充</span></a>
+<ul>
+<li class="toclevel-4 tocsection-12"><a href="#SplitVertical_gradients"><span class="tocnumber">5.3.3.1</span> <span class="toctext">双向垂直渐变</span></a></li>
+</ul>
+</li>
+<li class="toclevel-3 tocsection-13"><a href="#Border"><span class="tocnumber">5.3.4</span> <span class="toctext">边框</span></a></li>
+<li class="toclevel-3 tocsection-14"><a href="#Interlaced"><span class="tocnumber">5.3.5</span> <span class="toctext">隔行扫描线</span></a></li>
+</ul>
+</li>
+<li class="toclevel-2 tocsection-15"><a href="#Colors"><span class="tocnumber">5.4</span> <span class="toctext">色彩</span></a>
+<ul>
+<li class="toclevel-3 tocsection-16"><a href="#Color_names"><span class="tocnumber">5.4.1</span> <span class="toctext">颜色命名</span></a></li>
+<li class="toclevel-3 tocsection-17"><a href="#RGB_values"><span class="tocnumber">5.4.2</span> <span class="toctext">RGB 色值</span></a></li>
+</ul>
+</li>
+<li class="toclevel-2 tocsection-18"><a href="#Text_shadow_strings"><span class="tocnumber">5.5</span> <span class="toctext">文字阴影描述法</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-19"><a href="#Theme_elements"><span class="tocnumber">6</span> <span class="toctext">界面元素</span></a>
+<ul>
+<li class="toclevel-2 tocsection-20"><a href="#Geometry"><span class="tocnumber">6.1</span> <span class="toctext">几何特征</span></a>
+<ul>
+<li class="toclevel-3 tocsection-21"><a href="#border.width"><span class="tocnumber">6.1.1</span> <span class="toctext">border.width</span></a></li>
+<li class="toclevel-3 tocsection-22"><a href="#menu.border.width"><span class="tocnumber">6.1.2</span> <span class="toctext">menu.border.width</span></a></li>
+<li class="toclevel-3 tocsection-23"><a href="#menu.separator.width"><span class="tocnumber">6.1.3</span> <span class="toctext">menu.separator.width</span></a></li>
+<li class="toclevel-3 tocsection-24"><a href="#menu.separator.padding.width"><span class="tocnumber">6.1.4</span> <span class="toctext">menu.separator.padding.width</span></a></li>
+<li class="toclevel-3 tocsection-25"><a href="#menu.separator.padding.height"><span class="tocnumber">6.1.5</span> <span class="toctext">menu.separator.padding.height</span></a></li>
+<li class="toclevel-3 tocsection-26"><a href="#osd.border.width"><span class="tocnumber">6.1.6</span> <span class="toctext">osd.border.width</span></a></li>
+<li class="toclevel-3 tocsection-27"><a href="#window.client.padding.width"><span class="tocnumber">6.1.7</span> <span class="toctext">window.client.padding.width</span></a></li>
+<li class="toclevel-3 tocsection-28"><a href="#window.client.padding.height"><span class="tocnumber">6.1.8</span> <span class="toctext">window.client.padding.height</span></a></li>
+<li class="toclevel-3 tocsection-29"><a href="#window.handle.width"><span class="tocnumber">6.1.9</span> <span class="toctext">window.handle.width</span></a></li>
+<li class="toclevel-3 tocsection-30"><a href="#padding.width"><span class="tocnumber">6.1.10</span> <span class="toctext">padding.width</span></a></li>
+<li class="toclevel-3 tocsection-31"><a href="#padding.height"><span class="tocnumber">6.1.11</span> <span class="toctext">padding.height</span></a></li>
+<li class="toclevel-3 tocsection-32"><a href="#menu.overlap.x"><span class="tocnumber">6.1.12</span> <span class="toctext">menu.overlap.x</span></a></li>
+<li class="toclevel-3 tocsection-33"><a href="#menu.overlap.y"><span class="tocnumber">6.1.13</span> <span class="toctext">menu.overlap.y</span></a></li>
+<li class="toclevel-3 tocsection-34"><a href="#menu.overlap"><span class="tocnumber">6.1.14</span> <span class="toctext">menu.overlap</span></a></li>
+</ul>
+</li>
+<li class="toclevel-2 tocsection-35"><a href="#Border_colors"><span class="tocnumber">6.2</span> <span class="toctext">边框颜色</span></a>
+<ul>
+<li class="toclevel-3 tocsection-36"><a href="#window.active.border.color"><span class="tocnumber">6.2.1</span> <span class="toctext">window.active.border.color</span></a></li>
+<li class="toclevel-3 tocsection-37"><a href="#window.active.title.separator.color"><span class="tocnumber">6.2.2</span> <span class="toctext">window.active.title.separator.color</span></a></li>
+<li class="toclevel-3 tocsection-38"><a href="#window.inactive.border.color"><span class="tocnumber">6.2.3</span> <span class="toctext">window.inactive.border.color</span></a></li>
+<li class="toclevel-3 tocsection-39"><a href="#window.inactive.title.separator.color"><span class="tocnumber">6.2.4</span> <span class="toctext">window.inactive.title.separator.color</span></a></li>
+<li class="toclevel-3 tocsection-40"><a href="#border.color"><span class="tocnumber">6.2.5</span> <span class="toctext">border.color</span></a></li>
+<li class="toclevel-3 tocsection-41"><a href="#window.active.client.color"><span class="tocnumber">6.2.6</span> <span class="toctext">window.active.client.color</span></a></li>
+<li class="toclevel-3 tocsection-42"><a href="#window.inactive.client.color"><span class="tocnumber">6.2.7</span> <span class="toctext">window.inactive.client.color</span></a></li>
+<li class="toclevel-3 tocsection-43"><a href="#menu.border.color"><span class="tocnumber">6.2.8</span> <span class="toctext">menu.border.color</span></a></li>
+<li class="toclevel-3 tocsection-44"><a href="#osd.border.color"><span class="tocnumber">6.2.9</span> <span class="toctext">osd.border.color</span></a></li>
+</ul>
+</li>
+<li class="toclevel-2 tocsection-45"><a href="#Titlebar_colors"><span class="tocnumber">6.3</span> <span class="toctext">标题栏颜色</span></a>
+<ul>
+<li class="toclevel-3 tocsection-46"><a href="#window.active.label.text.color"><span class="tocnumber">6.3.1</span> <span class="toctext">window.active.label.text.color</span></a></li>
+<li class="toclevel-3 tocsection-47"><a href="#window.inactive.label.text.color"><span class="tocnumber">6.3.2</span> <span class="toctext">window.inactive.label.text.color</span></a></li>
+<li class="toclevel-3 tocsection-48"><a href="#window.active.button.unpressed.image.color"><span class="tocnumber">6.3.3</span> <span class="toctext">window.active.button.unpressed.image.color</span></a></li>
+<li class="toclevel-3 tocsection-49"><a href="#window.active.button.pressed.image.color"><span class="tocnumber">6.3.4</span> <span class="toctext">window.active.button.pressed.image.color</span></a></li>
+<li class="toclevel-3 tocsection-50"><a href="#window.active.button.disabled.image.color"><span class="tocnumber">6.3.5</span> <span class="toctext">window.active.button.disabled.image.color</span></a></li>
+<li class="toclevel-3 tocsection-51"><a href="#window.active.button.hover.image.color"><span class="tocnumber">6.3.6</span> <span class="toctext">window.active.button.hover.image.color</span></a></li>
+<li class="toclevel-3 tocsection-52"><a href="#window.active.button.toggled.unpressed.image.color"><span class="tocnumber">6.3.7</span> <span class="toctext">window.active.button.toggled.unpressed.image.color</span></a></li>
+<li class="toclevel-3 tocsection-53"><a href="#window.active.button.toggled.pressed.image.color"><span class="tocnumber">6.3.8</span> <span class="toctext">window.active.button.toggled.pressed.image.color</span></a></li>
+<li class="toclevel-3 tocsection-54"><a href="#window.active.button.toggled.hover.image.color"><span class="tocnumber">6.3.9</span> <span class="toctext">window.active.button.toggled.hover.image.color</span></a></li>
+<li class="toclevel-3 tocsection-55"><a href="#window.active.button.toggled.image.color"><span class="tocnumber">6.3.10</span> <span class="toctext">window.active.button.toggled.image.color</span></a></li>
+<li class="toclevel-3 tocsection-56"><a href="#window.inactive.button.unpressed.image.color"><span class="tocnumber">6.3.11</span> <span class="toctext">window.inactive.button.unpressed.image.color</span></a></li>
+<li class="toclevel-3 tocsection-57"><a href="#window.inactive.button.pressed.image.color"><span class="tocnumber">6.3.12</span> <span class="toctext">window.inactive.button.pressed.image.color</span></a></li>
+<li class="toclevel-3 tocsection-58"><a href="#window.inactive.button.disabled.image.color"><span class="tocnumber">6.3.13</span> <span class="toctext">window.inactive.button.disabled.image.color</span></a></li>
+<li class="toclevel-3 tocsection-59"><a href="#window.inactive.button.hover.image.color"><span class="tocnumber">6.3.14</span> <span class="toctext">window.inactive.button.hover.image.color</span></a></li>
+<li class="toclevel-3 tocsection-60"><a href="#window.inactive.button.toggled.unpressed.image.color"><span class="tocnumber">6.3.15</span> <span class="toctext">window.inactive.button.toggled.unpressed.image.color</span></a></li>
+<li class="toclevel-3 tocsection-61"><a href="#window.inactive.button.toggled.pressed.image.color"><span class="tocnumber">6.3.16</span> <span class="toctext">window.inactive.button.toggled.pressed.image.color</span></a></li>
+<li class="toclevel-3 tocsection-62"><a href="#window.inactive.button.toggled.hover.image.color"><span class="tocnumber">6.3.17</span> <span class="toctext">window.inactive.button.toggled.hover.image.color</span></a></li>
+<li class="toclevel-3 tocsection-63"><a href="#window.inactive.button.toggled.image.color"><span class="tocnumber">6.3.18</span> <span class="toctext">window.inactive.button.toggled.image.color</span></a></li>
+</ul>
+</li>
+<li class="toclevel-2 tocsection-64"><a href="#Active_window_textures"><span class="tocnumber">6.4</span> <span class="toctext">活动窗口纹理</span></a>
+<ul>
+<li class="toclevel-3 tocsection-65"><a href="#window.active.title.bg"><span class="tocnumber">6.4.1</span> <span class="toctext">window.active.title.bg</span></a></li>
+<li class="toclevel-3 tocsection-66"><a href="#window.active.label.bg"><span class="tocnumber">6.4.2</span> <span class="toctext">window.active.label.bg</span></a></li>
+<li class="toclevel-3 tocsection-67"><a href="#window.active.handle.bg"><span class="tocnumber">6.4.3</span> <span class="toctext">window.active.handle.bg</span></a></li>
+<li class="toclevel-3 tocsection-68"><a href="#window.active.grip.bg"><span class="tocnumber">6.4.4</span> <span class="toctext">window.active.grip.bg</span></a></li>
+</ul>
+</li>
+<li class="toclevel-2 tocsection-69"><a href="#Inactive_window_textures"><span class="tocnumber">6.5</span> <span class="toctext">待命窗口纹理</span></a>
+<ul>
+<li class="toclevel-3 tocsection-70"><a href="#window.inactive.title.bg"><span class="tocnumber">6.5.1</span> <span class="toctext">window.inactive.title.bg</span></a></li>
+<li class="toclevel-3 tocsection-71"><a href="#window.inactive.label.bg"><span class="tocnumber">6.5.2</span> <span class="toctext">window.inactive.label.bg</span></a></li>
+<li class="toclevel-3 tocsection-72"><a href="#window.inactive.handle.bg"><span class="tocnumber">6.5.3</span> <span class="toctext">window.inactive.handle.bg</span></a></li>
+<li class="toclevel-3 tocsection-73"><a href="#window.inactive.grip.bg"><span class="tocnumber">6.5.4</span> <span class="toctext">window.inactive.grip.bg</span></a></li>
+</ul>
+</li>
+<li class="toclevel-2 tocsection-74"><a href="#Active_window_button_textures"><span class="tocnumber">6.6</span> <span class="toctext">活动窗口按钮</span></a>
+<ul>
+<li class="toclevel-3 tocsection-75"><a href="#window.active.button.unpressed.bg"><span class="tocnumber">6.6.1</span> <span class="toctext">window.active.button.unpressed.bg</span></a></li>
+<li class="toclevel-3 tocsection-76"><a href="#window.active.button.pressed.bg"><span class="tocnumber">6.6.2</span> <span class="toctext">window.active.button.pressed.bg</span></a></li>
+<li class="toclevel-3 tocsection-77"><a href="#window.active.button.hover.bg"><span class="tocnumber">6.6.3</span> <span class="toctext">window.active.button.hover.bg</span></a></li>
+<li class="toclevel-3 tocsection-78"><a href="#window.active.button.disabled.bg"><span class="tocnumber">6.6.4</span> <span class="toctext">window.active.button.disabled.bg</span></a></li>
+<li class="toclevel-3 tocsection-79"><a href="#window.active.button.toggled.unpressed.bg"><span class="tocnumber">6.6.5</span> <span class="toctext">window.active.button.toggled.unpressed.bg</span></a></li>
+<li class="toclevel-3 tocsection-80"><a href="#window.active.button.toggled.pressed.bg"><span class="tocnumber">6.6.6</span> <span class="toctext">window.active.button.toggled.pressed.bg</span></a></li>
+<li class="toclevel-3 tocsection-81"><a href="#window.active.button.toggled.hover.bg"><span class="tocnumber">6.6.7</span> <span class="toctext">window.active.button.toggled.hover.bg</span></a></li>
+<li class="toclevel-3 tocsection-82"><a href="#window.active.button.toggled.bg"><span class="tocnumber">6.6.8</span> <span class="toctext">window.active.button.toggled.bg</span></a></li>
+</ul>
+</li>
+<li class="toclevel-2 tocsection-83"><a href="#Inactive_window_button_textures"><span class="tocnumber">6.7</span> <span class="toctext">非活动窗口按钮</span></a>
+<ul>
+<li class="toclevel-3 tocsection-84"><a href="#window.inactive.button.unpressed.bg"><span class="tocnumber">6.7.1</span> <span class="toctext">window.inactive.button.unpressed.bg</span></a></li>
+<li class="toclevel-3 tocsection-85"><a href="#window.inactive.button.pressed.bg"><span class="tocnumber">6.7.2</span> <span class="toctext">window.inactive.button.pressed.bg</span></a></li>
+<li class="toclevel-3 tocsection-86"><a href="#window.inactive.button.hover.bg"><span class="tocnumber">6.7.3</span> <span class="toctext">window.inactive.button.hover.bg</span></a></li>
+<li class="toclevel-3 tocsection-87"><a href="#window.inactive.button.disabled.bg"><span class="tocnumber">6.7.4</span> <span class="toctext">window.inactive.button.disabled.bg</span></a></li>
+<li class="toclevel-3 tocsection-88"><a href="#window.inactive.button.toggled.unpressed.bg"><span class="tocnumber">6.7.5</span> <span class="toctext">window.inactive.button.toggled.unpressed.bg</span></a></li>
+<li class="toclevel-3 tocsection-89"><a href="#window.inactive.button.toggled.pressed.bg"><span class="tocnumber">6.7.6</span> <span class="toctext">window.inactive.button.toggled.pressed.bg</span></a></li>
+<li class="toclevel-3 tocsection-90"><a href="#window.inactive.button.toggled.hover.bg"><span class="tocnumber">6.7.7</span> <span class="toctext">window.inactive.button.toggled.hover.bg</span></a></li>
+<li class="toclevel-3 tocsection-91"><a href="#window.inactive.button.toggled.bg"><span class="tocnumber">6.7.8</span> <span class="toctext">window.inactive.button.toggled.bg</span></a></li>
+</ul>
+</li>
+<li class="toclevel-2 tocsection-92"><a href="#Menu_colors"><span class="tocnumber">6.8</span> <span class="toctext">菜单配色</span></a>
+<ul>
+<li class="toclevel-3 tocsection-93"><a href="#menu.title.text.color"><span class="tocnumber">6.8.1</span> <span class="toctext">menu.title.text.color</span></a></li>
+<li class="toclevel-3 tocsection-94"><a href="#menu.items.text.color"><span class="tocnumber">6.8.2</span> <span class="toctext">menu.items.text.color</span></a></li>
+<li class="toclevel-3 tocsection-95"><a href="#menu.items.disabled.text.color"><span class="tocnumber">6.8.3</span> <span class="toctext">menu.items.disabled.text.color</span></a></li>
+<li class="toclevel-3 tocsection-96"><a href="#menu.items.active.text.color"><span class="tocnumber">6.8.4</span> <span class="toctext">menu.items.active.text.color</span></a></li>
+<li class="toclevel-3 tocsection-97"><a href="#menu.items.active.disabled.text.color"><span class="tocnumber">6.8.5</span> <span class="toctext">menu.items.active.disabled.text.color</span></a></li>
+<li class="toclevel-3 tocsection-98"><a href="#menu.separator.color"><span class="tocnumber">6.8.6</span> <span class="toctext">menu.separator.color</span></a></li>
+</ul>
+</li>
+<li class="toclevel-2 tocsection-99"><a href="#Menu_textures"><span class="tocnumber">6.9</span> <span class="toctext">菜单纹理</span></a>
+<ul>
+<li class="toclevel-3 tocsection-100"><a href="#menu.items.bg"><span class="tocnumber">6.9.1</span> <span class="toctext">menu.items.bg</span></a></li>
+<li class="toclevel-3 tocsection-101"><a href="#menu.items.active.bg"><span class="tocnumber">6.9.2</span> <span class="toctext">menu.items.active.bg</span></a></li>
+<li class="toclevel-3 tocsection-102"><a href="#menu.title.bg"><span class="tocnumber">6.9.3</span> <span class="toctext">menu.title.bg</span></a></li>
+</ul>
+</li>
+<li class="toclevel-2 tocsection-103"><a href="#OSD_textures"><span class="tocnumber">6.10</span> <span class="toctext">OSD 纹理</span></a>
+<ul>
+<li class="toclevel-3 tocsection-104"><a href="#osd.bg"><span class="tocnumber">6.10.1</span> <span class="toctext">osd.bg</span></a></li>
+<li class="toclevel-3 tocsection-105"><a href="#osd.label.bg"><span class="tocnumber">6.10.2</span> <span class="toctext">osd.label.bg</span></a></li>
+<li class="toclevel-3 tocsection-106"><a href="#osd.hilight.bg"><span class="tocnumber">6.10.3</span> <span class="toctext">osd.hilight.bg</span></a></li>
+<li class="toclevel-3 tocsection-107"><a href="#osd.unhilight.bg"><span class="tocnumber">6.10.4</span> <span class="toctext">osd.unhilight.bg</span></a></li>
+</ul>
+</li>
+<li class="toclevel-2 tocsection-108"><a href="#OSD_colors"><span class="tocnumber">6.11</span> <span class="toctext">OSD 配色</span></a>
+<ul>
+<li class="toclevel-3 tocsection-109"><a href="#osd.label.text.color"><span class="tocnumber">6.11.1</span> <span class="toctext">osd.label.text.color</span></a></li>
+<li class="toclevel-3 tocsection-110"><a href="#osd.hilight.bg.color"><span class="tocnumber">6.11.2</span> <span class="toctext">osd.hilight.bg.color</span></a></li>
+<li class="toclevel-3 tocsection-111"><a href="#osd.unhilight.bg.color"><span class="tocnumber">6.11.3</span> <span class="toctext">osd.unhilight.bg.color</span></a></li>
+</ul>
+</li>
+<li class="toclevel-2 tocsection-112"><a href="#Text_justification"><span class="tocnumber">6.12</span> <span class="toctext">文本对齐方式</span></a>
+<ul>
+<li class="toclevel-3 tocsection-113"><a href="#window.label.text.justify"><span class="tocnumber">6.12.1</span> <span class="toctext">window.label.text.justify</span></a></li>
+<li class="toclevel-3 tocsection-114"><a href="#menu.title.text.justify"><span class="tocnumber">6.12.2</span> <span class="toctext">menu.title.text.justify</span></a></li>
+</ul>
+</li>
+<li class="toclevel-2 tocsection-115"><a href="#Text_shadows"><span class="tocnumber">6.13</span> <span class="toctext">字体与阴影</span></a>
+<ul>
+<li class="toclevel-3 tocsection-116"><a href="#window.active.label.text.font"><span class="tocnumber">6.13.1</span> <span class="toctext">window.active.label.text.font</span></a></li>
+<li class="toclevel-3 tocsection-117"><a href="#window.inactive.label.text.font"><span class="tocnumber">6.13.2</span> <span class="toctext">window.inactive.label.text.font</span></a></li>
+<li class="toclevel-3 tocsection-118"><a href="#menu.items.font"><span class="tocnumber">6.13.3</span> <span class="toctext">menu.items.font</span></a></li>
+<li class="toclevel-3 tocsection-119"><a href="#menu.title.text.font"><span class="tocnumber">6.13.4</span> <span class="toctext">menu.title.text.font</span></a></li>
+<li class="toclevel-3 tocsection-120"><a href="#osd.label.text.font"><span class="tocnumber">6.13.5</span> <span class="toctext">osd.label.text.font</span></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-121"><a href="#Dialogs"><span class="tocnumber">7</span> <span class="toctext">斜向渐变</span></a></li>
+<li class="toclevel-1 tocsection-122"><a href="#Button_images"><span class="tocnumber">8</span> <span class="toctext">按钮图案</span></a>
+<ul>
+<li class="toclevel-2 tocsection-123"><a href="#Maximized_button"><span class="tocnumber">8.1</span> <span class="toctext">最大化按钮</span></a>
+<ul>
+<li class="toclevel-3 tocsection-124"><a href="#max.xbm"><span class="tocnumber">8.1.1</span> <span class="toctext">max.xbm</span></a></li>
+<li class="toclevel-3 tocsection-125"><a href="#max_toggled.xbm"><span class="tocnumber">8.1.2</span> <span class="toctext">max_toggled.xbm</span></a></li>
+<li class="toclevel-3 tocsection-126"><a href="#max_pressed.xbm"><span class="tocnumber">8.1.3</span> <span class="toctext">max_pressed.xbm</span></a></li>
+<li class="toclevel-3 tocsection-127"><a href="#max_disabled.xbm"><span class="tocnumber">8.1.4</span> <span class="toctext">max_disabled.xbm</span></a></li>
+<li class="toclevel-3 tocsection-128"><a href="#max_hover.xbm"><span class="tocnumber">8.1.5</span> <span class="toctext">max_hover.xbm</span></a></li>
+<li class="toclevel-3 tocsection-129"><a href="#max_toggled_pressed.xbm"><span class="tocnumber">8.1.6</span> <span class="toctext">max_toggled_pressed.xbm</span></a></li>
+<li class="toclevel-3 tocsection-130"><a href="#max_toggled_hover.xbm"><span class="tocnumber">8.1.7</span> <span class="toctext">max_toggled_hover.xbm</span></a></li>
+</ul>
+</li>
+<li class="toclevel-2 tocsection-131"><a href="#Iconify_button"><span class="tocnumber">8.2</span> <span class="toctext">图标按钮</span></a>
+<ul>
+<li class="toclevel-3 tocsection-132"><a href="#iconify.xbm"><span class="tocnumber">8.2.1</span> <span class="toctext">iconify.xbm</span></a></li>
+<li class="toclevel-3 tocsection-133"><a href="#iconify_pressed.xbm"><span class="tocnumber">8.2.2</span> <span class="toctext">iconify_pressed.xbm</span></a></li>
+<li class="toclevel-3 tocsection-134"><a href="#iconify_disabled.xbm"><span class="tocnumber">8.2.3</span> <span class="toctext">iconify_disabled.xbm</span></a></li>
+<li class="toclevel-3 tocsection-135"><a href="#iconify_hover.xbm"><span class="tocnumber">8.2.4</span> <span class="toctext">iconify_hover.xbm</span></a></li>
+</ul>
+</li>
+<li class="toclevel-2 tocsection-136"><a href="#Close_button"><span class="tocnumber">8.3</span> <span class="toctext">关闭按钮</span></a>
+<ul>
+<li class="toclevel-3 tocsection-137"><a href="#close.xbm"><span class="tocnumber">8.3.1</span> <span class="toctext">close.xbm</span></a></li>
+<li class="toclevel-3 tocsection-138"><a href="#close_pressed.xbm"><span class="tocnumber">8.3.2</span> <span class="toctext">close_pressed.xbm</span></a></li>
+<li class="toclevel-3 tocsection-139"><a href="#close_disabled.xbm"><span class="tocnumber">8.3.3</span> <span class="toctext">close_disabled.xbm</span></a></li>
+<li class="toclevel-3 tocsection-140"><a href="#close_hover.xbm"><span class="tocnumber">8.3.4</span> <span class="toctext">close_hover.xbm</span></a></li>
+</ul>
+</li>
+<li class="toclevel-2 tocsection-141"><a href="#All-desktops_button"><span class="tocnumber">8.4</span> <span class="toctext">桌面按钮</span></a>
+<ul>
+<li class="toclevel-3 tocsection-142"><a href="#desk.xbm"><span class="tocnumber">8.4.1</span> <span class="toctext">desk.xbm</span></a></li>
+<li class="toclevel-3 tocsection-143"><a href="#desk_toggled.xbm"><span class="tocnumber">8.4.2</span> <span class="toctext">desk_toggled.xbm</span></a></li>
+<li class="toclevel-3 tocsection-144"><a href="#desk_pressed.xbm"><span class="tocnumber">8.4.3</span> <span class="toctext">desk_pressed.xbm</span></a></li>
+<li class="toclevel-3 tocsection-145"><a href="#desk_disabled.xbm"><span class="tocnumber">8.4.4</span> <span class="toctext">desk_disabled.xbm</span></a></li>
+<li class="toclevel-3 tocsection-146"><a href="#desk_hover.xbm"><span class="tocnumber">8.4.5</span> <span class="toctext">desk_hover.xbm</span></a></li>
+<li class="toclevel-3 tocsection-147"><a href="#desk_toggled_pressed.xbm"><span class="tocnumber">8.4.6</span> <span class="toctext">desk_toggled_pressed.xbm</span></a></li>
+<li class="toclevel-3 tocsection-148"><a href="#desk_toggled_hover.xbm"><span class="tocnumber">8.4.7</span> <span class="toctext">desk_toggled_hover.xbm</span></a></li>
+</ul>
+</li>
+<li class="toclevel-2 tocsection-149"><a href="#Shade_button"><span class="tocnumber">8.5</span> <span class="toctext">按钮遮罩</span></a>
+<ul>
+<li class="toclevel-3 tocsection-150"><a href="#shade.xbm"><span class="tocnumber">8.5.1</span> <span class="toctext">shade.xbm</span></a></li>
+<li class="toclevel-3 tocsection-151"><a href="#shade_toggled.xbm"><span class="tocnumber">8.5.2</span> <span class="toctext">shade_toggled.xbm</span></a></li>
+<li class="toclevel-3 tocsection-152"><a href="#shade_pressed.xbm"><span class="tocnumber">8.5.3</span> <span class="toctext">shade_pressed.xbm</span></a></li>
+<li class="toclevel-3 tocsection-153"><a href="#shade_disabled.xbm"><span class="tocnumber">8.5.4</span> <span class="toctext">shade_disabled.xbm</span></a></li>
+<li class="toclevel-3 tocsection-154"><a href="#shade_hover.xbm"><span class="tocnumber">8.5.5</span> <span class="toctext">shade_hover.xbm</span></a></li>
+<li class="toclevel-3 tocsection-155"><a href="#shade_toggled_pressed.xbm"><span class="tocnumber">8.5.6</span> <span class="toctext">shade_toggled_pressed.xbm</span></a></li>
+<li class="toclevel-3 tocsection-156"><a href="#shade_toggled_hover.xbm"><span class="tocnumber">8.5.7</span> <span class="toctext">shade_toggled_hover.xbm</span></a></li>
+</ul>
+</li>
+<li class="toclevel-2 tocsection-157"><a href="#Submenu_bullet"><span class="tocnumber">8.6</span> <span class="toctext">子菜单标记</span></a>
+<ul>
+<li class="toclevel-3 tocsection-158"><a href="#bullet.xbm"><span class="tocnumber">8.6.1</span> <span class="toctext">bullet.xbm</span></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</td></tr></table>
+<h1> <span class="mw-headline" id="Theme_installation"> 主题安装路径 </span></h1>
+<p>Openbox 主题所在目录：</p>
+<ul><li> 系统内置主题位于：<code>/usr/share/themes</code>。
+</li><li> 用户自定义主题位于 <code>~/.local/share/themes</code> 或者 <code>~/.themes</code>。
+</li></ul>
+<h1> <span class="mw-headline" id="Theme_selection"> 主题选择与切换 </span></h1>
+<p><a href="http://openbox.org/wiki/ObConf:About" title="ObConf:About">ObConf</a> 这个小程序能简单直观的选择、切换主题。另外还有一些 <a href="http://openbox.org/wiki/Openbox:Pipemenus" title="Openbox:Pipemenus">Pipe menus</a> 也能做到这一点。</p>
+<p>想要自己动手修改配置文件的话，去看看 <code>rc.xml</code> 这个文件吧。参考 <a href="http://openbox.org/wiki/Configuration" title="Configuration" class="mw-redirect">Configuration guide</a>。
+</p>
+<h1> <span class="mw-headline" id="Theme_file_structure"> 主题文件结构 </span></h1>
+<pre>主题目录 (如 /usr/share/themes)
+ |
+ +-&gt; ThemeName  (主题名称，如 Clearlooks)
+      |
+      +-&gt; openbox-3  (Openbox 3 格式)
+           |
+           |-&gt; themerc  (主题核心文件，也是此文档的主角)
+           |
+           |-&gt; max.xbm  (标题栏按钮图案)
+           |-&gt; close.xbm
+           ...
+           +-&gt; shade.xbm
+</pre>
+<p><a href="http://openbox.org/wiki/ObConf:About" title="ObConf:About"> ObConf</a> 可以将它们打包成一个 <code>.obt</code> 文件。</p>
+<h1> <span class="mw-headline" id="Example"> 范例 </span></h1>
+<p>这只是一个示例，并不实用，只是说明一下各个配置项。</p>
+<p><code></p>
+<pre># 窗口尺寸等
+<a href="#padding.width">padding.width</a>: 2
+<a href="#padding.height">padding.height</a>: 2
+<a href="#border.width">border.width</a>: 1
+<a href="#window.client.padding.width">window.client.padding.width</a>: 1
+<a href="#window.client.padding.height">window.client.padding.height</a>: 0
+<a href="#window.handle.width">window.handle.width</a>: 3
+
+# 菜单尺寸等
+<a href="#menu.border.width">menu.border.width</a>: 1
+<a href="#menu.overlap.x">menu.overlap.x</a>: 0
+<a href="#menu.overlap.y">menu.overlap.y</a>: 0
+
+# 边框颜色
+<a href="#window.active.border.color">window.active.border.color</a>: #000000
+<a href="#window.inactive.border.color">window.inactive.border.color</a>: #000000
+<a href="#menu.border.color">menu.border.color</a>: #000000
+<a href="#window.active.client.color">window.active.client.color</a>: #ffffff
+<a href="#window.inactive.client.color">window.inactive.client.color</a>: #cccccc
+
+# 字体与阴影
+<a href="#window.active.label.text.font">window.active.label.text.font</a>: shadow=y:shadowtint=70:shadowoffset=1
+<a href="#window.inactive.label.text.font">window.inactive.label.text.font</a>: shadow=y:shadowtint=20:shadowoffset=1
+<a href="#menu.items.font">menu.items.font</a>: shadow=n
+<a href="#menu.title.text.font">menu.title.text.font</a>: shadow=y:shadowtint=70:shadowoffset=1
+
+# 标题栏文字对齐方式
+<a href="#window.label.text.justify">window.label.text.justify</a>: Center
+
+# 活动窗口
+<a href="#window.active.title.bg">window.active.title.bg</a>: Raised Gradient Vertical Interlaced
+<a href="#window.active.title.bg">window.active.title.bg</a>.color: #658fb5
+<a href="#window.active.title.bg">window.active.title.bg</a>.colorTo: #4d6982
+<a href="#window.active.title.bg">window.active.title.bg</a>.interlace.color: #7788cc
+
+<a href="#window.active.label.bg">window.active.label.bg</a>: Parentrelative
+<a href="#window.active.label.text.color">window.active.label.text.color</a>: #ffffff
+
+<a href="#window.active.handle.bg">window.active.handle.bg</a>: Raised Gradient Vertical
+<a href="#window.active.handle.bg">window.active.handle.bg</a>.color: #658fb5
+<a href="#window.active.handle.bg">window.active.handle.bg</a>.colorTo: #4d6982
+
+<a href="#window.active.grip.bg">window.active.grip.bg</a>: Raised Gradient Vertical
+<a href="#window.active.grip.bg">window.active.grip.bg</a>.color: #658fb5
+<a href="#window.active.grip.bg">window.active.grip.bg</a>.colorTo: #4d6982
+
+<a href="#window.active.button.unpressed.bg">window.active.button.unpressed.bg</a>: Flat Gradient Vertical Border
+<a href="#window.active.button.unpressed.bg">window.active.button.unpressed.bg</a>.color: #6993b9
+<a href="#window.active.button.unpressed.bg">window.active.button.unpressed.bg</a>.colorTo: #55799a
+<a href="#window.active.button.unpressed.bg">window.active.button.unpressed.bg</a>.border.color: #3d4c5a
+<a href="#window.active.button.unpressed.image.color">window.active.button.unpressed.image.color</a>: #ffffff
+
+<a href="#window.active.button.pressed.bg">window.active.button.pressed.bg</a>: Flat Gradient Vertical Border
+<a href="#window.active.button.pressed.bg">window.active.button.pressed.bg</a>.color: #537797
+<a href="#window.active.button.pressed.bg">window.active.button.pressed.bg</a>.colorTo: #50708e
+<a href="#window.active.button.pressed.bg">window.active.button.pressed.bg</a>.border.color: #3d4c5a
+<a href="#window.active.button.pressed.image.color">window.active.button.pressed.image.color</a>: #ffffff
+
+<a href="#window.active.button.disabled.bg">window.active.button.disabled.bg</a>: Flat Gradient Vertical Border
+<a href="#window.active.button.disabled.bg">window.active.button.disabled.bg</a>.color: #537797
+<a href="#window.active.button.disabled.bg">window.active.button.disabled.bg</a>.colorTo: #50708e
+<a href="#window.active.button.disabled.bg">window.active.button.disabled.bg</a>.border.color: #3d4c5a
+<a href="#window.active.button.disabled.image.color">window.active.button.disabled.image.color</a>: #3d4c5a
+
+<a href="#window.active.button.hover.bg">window.active.button.hover.bg</a>: Flat Gradient Vertical Border
+<a href="#window.active.button.hover.bg">window.active.button.hover.bg</a>.color: #6993b9
+<a href="#window.active.button.hover.bg">window.active.button.hover.bg</a>.colorTo: #55799a
+<a href="#window.active.button.hover.bg">window.active.button.hover.bg</a>.border.color: #3d4c5a
+<a href="#window.active.button.hover.image.color">window.active.button.hover.image.color</a>: #ffffff
+
+<a href="#window.active.button.toggled.unpressed.bg">window.active.button.toggled.unpressed.bg</a>: Flat Gradient Vertical Border
+<a href="#window.active.button.toggled.unpressed.bg">window.active.button.toggled.unpressed.bg</a>.color: #6993b9
+<a href="#window.active.button.toggled.unpressed.bg">window.active.button.toggled.unpressed.bg</a>.colorTo: #55799a
+<a href="#window.active.button.toggled.unpressed.bg">window.active.button.toggled.unpressed.bg</a>.border.color: #3d4c5a
+<a href="#window.active.button.toggled.unpressed.image.color">window.active.button.toggled.unpressed.image.color</a>: #cccccc
+
+<a href="#window.active.button.toggled.pressed.bg">window.active.button.toggled.pressed.bg</a>: Flat Gradient Vertical Border
+<a href="#window.active.button.toggled.pressed.bg">window.active.button.toggled.pressed.bg</a>.color: #537797
+<a href="#window.active.button.toggled.pressed.bg">window.active.button.toggled.pressed.bg</a>.colorTo: #50708e
+<a href="#window.active.button.toggled.pressed.bg">window.active.button.toggled.pressed.bg</a>.border.color: #3d4c5a
+<a href="#window.active.button.toggled.pressed.image.color">window.active.button.toggled.pressed.image.color</a>: #ffffff
+
+<a href="#window.active.button.toggled.hover.bg">window.active.button.toggled.hover.bg</a>: Flat Gradient Vertical Border
+<a href="#window.active.button.toggled.hover.bg">window.active.button.toggled.hover.bg</a>.color: #6993b9
+<a href="#window.active.button.toggled.hover.bg">window.active.button.toggled.hover.bg</a>.colorTo: #55799a
+<a href="#window.active.button.toggled.hover.bg">window.active.button.toggled.hover.bg</a>.border.color: #3d4c5a
+<a href="#window.active.button.toggled.hover.image.color">window.active.button.toggled.hover.image.color</a>: #ffffff
+
+# 非活动窗口
+<a href="#window.inactive.title.bg">window.inactive.title.bg</a>: Raised Gradient Vertical
+<a href="#window.inactive.title.bg">window.inactive.title.bg</a>.color: #f1eeea
+<a href="#window.inactive.title.bg">window.inactive.title.bg</a>.colorTo: #d8cfc7
+
+<a href="#window.inactive.label.bg">window.inactive.label.bg</a>: Parentrelative
+<a href="#window.inactive.label.text.color">window.inactive.label.text.color</a>: #000000
+
+<a href="#window.inactive.handle.bg">window.inactive.handle.bg</a>: Raised Gradient Vertical
+<a href="#window.inactive.handle.bg">window.inactive.handle.bg</a>.color: #f1eeea
+<a href="#window.inactive.handle.bg">window.inactive.handle.bg</a>.colorTo: #d8cfc7
+
+<a href="#window.inactive.grip.bg">window.inactive.grip.bg</a>: Raised Gradient Vertical
+<a href="#window.inactive.grip.bg">window.inactive.grip.bg</a>.color: #f1eeea
+<a href="#window.inactive.grip.bg">window.inactive.grip.bg</a>.colorTo: #d8cfc7
+
+<a href="#window.inactive.button.unpressed.bg">window.inactive.button.unpressed.bg</a>: Flat Gradient Vertical Border
+<a href="#window.inactive.button.unpressed.bg">window.inactive.button.unpressed.bg</a>.color: #efebe7
+<a href="#window.inactive.button.unpressed.bg">window.inactive.button.unpressed.bg</a>.colorTo: #ddd6ce
+<a href="#window.inactive.button.unpressed.bg">window.inactive.button.unpressed.bg</a>.border.color: #8f8173
+<a href="#window.inactive.button.unpressed.image.color">window.inactive.button.unpressed.image.color</a>: #000000
+
+<a href="#window.inactive.button.pressed.bg">window.inactive.button.pressed.bg</a>: Flat Gradient Vertical Border
+<a href="#window.inactive.button.pressed.bg">window.inactive.button.pressed.bg</a>.color: #efebe7
+<a href="#window.inactive.button.pressed.bg">window.inactive.button.pressed.bg</a>.colorTo: #ddd6ce
+<a href="#window.inactive.button.pressed.bg">window.inactive.button.pressed.bg</a>.border.color: #8f8173
+<a href="#window.inactive.button.pressed.image.color">window.inactive.button.pressed.image.color</a>: #000000
+
+<a href="#window.inactive.button.disabled.bg">window.inactive.button.disabled.bg</a>: Flat Gradient Vertical Border
+<a href="#window.inactive.button.disabled.bg">window.inactive.button.disabled.bg</a>.color: #efebe7
+<a href="#window.inactive.button.disabled.bg">window.inactive.button.disabled.bg</a>.colorTo: #ddd6ce
+<a href="#window.inactive.button.disabled.bg">window.inactive.button.disabled.bg</a>.border.color: #8f8173
+<a href="#window.inactive.button.disabled.image.color">window.inactive.button.disabled.image.color</a>: #8f8173
+
+<a href="#window.inactive.button.toggled.bg">window.inactive.button.toggled.bg</a>: Flat Gradient Vertical Border
+<a href="#window.inactive.button.toggled.bg">window.inactive.button.toggled.bg</a>.color: #efebe7
+<a href="#window.inactive.button.toggled.bg">window.inactive.button.toggled.bg</a>.colorTo: #ddd6ce
+<a href="#window.inactive.button.toggled.bg">window.inactive.button.toggled.bg</a>.border.color: #8f8173
+<a href="#window.inactive.button.toggled.image.color">window.inactive.button.toggled.image.color</a>: #000000
+
+<a href="#window.inactive.button.hover.bg">window.inactive.button.hover.bg</a>: Flat Gradient Vertical Border
+<a href="#window.inactive.button.hover.bg">window.inactive.button.hover.bg</a>.color: #efebe7
+<a href="#window.inactive.button.hover.bg">window.inactive.button.hover.bg</a>.colorTo: #ddd6ce
+<a href="#window.inactive.button.hover.bg">window.inactive.button.hover.bg</a>.border.color: #8f8173
+<a href="#window.inactive.button.hover.image.color">window.inactive.button.hover.image.color</a>: #000000
+
+<a href="#window.inactive.button.toggled.unpressed.bg">window.inactive.button.toggled.unpressed.bg</a>: Flat Gradient Vertical Border
+<a href="#window.inactive.button.toggled.unpressed.bg">window.inactive.button.toggled.unpressed.bg</a>.color: #efebe7
+<a href="#window.inactive.button.toggled.unpressed.bg">window.inactive.button.toggled.unpressed.bg</a>.colorTo: #ddd6ce
+<a href="#window.inactive.button.toggled.unpressed.bg">window.inactive.button.toggled.unpressed.bg</a>.border.color: #8f8173
+<a href="#window.inactive.button.toggled.unpressed.image.color">window.inactive.button.toggled.unpressed.image.color</a>: #000000
+
+<a href="#window.inactive.button.toggled.pressed.bg">window.inactive.button.toggled.pressed.bg</a>: Flat Gradient Vertical Border
+<a href="#window.inactive.button.toggled.pressed.bg">window.inactive.button.toggled.pressed.bg</a>.color: #efebe7
+<a href="#window.inactive.button.toggled.pressed.bg">window.inactive.button.toggled.pressed.bg</a>.colorTo: #ddd6ce
+<a href="#window.inactive.button.toggled.pressed.bg">window.inactive.button.toggled.pressed.bg</a>.border.color: #8f8173
+<a href="#window.inactive.button.toggled.pressed.image.color">window.inactive.button.pressed.toggled.image.color</a>: #000000
+
+<a href="#window.inactive.button.toggled.hover.bg">window.inactive.button.toggled.hover.bg</a>: Flat Gradient Vertical Border
+<a href="#window.inactive.button.toggled.hover.bg">window.inactive.button.toggled.hover.bg</a>.color: #efebe7
+<a href="#window.inactive.button.toggled.hover.bg">window.inactive.button.toggled.hover.bg</a>.colorTo: #ddd6ce
+<a href="#window.inactive.button.toggled.hover.bg">window.inactive.button.toggled.hover.bg</a>.border.color: #8f8173
+<a href="#window.inactive.button.toggled.hover.image.color">window.inactive.button.toggled.hover.image.color</a>: #000000
+
+# 菜单
+<a href="#menu.title.bg">menu.title.bg</a>: Raised Gradient Vertical
+<a href="#menu.title.bg">menu.title.bg</a>.color: #658fb5
+<a href="#menu.title.bg">menu.title.bg</a>.colorTo: #4d6982
+<a href="#menu.title.text.color">menu.title.text.color</a>: #ffffff
+<a href="#menu.title.text.justify">menu.title.text.justify</a>: Left
+</pre>
+<pre><a href="#menu.separator.color">menu.separator.color</a>: #444444
+<a href="#menu.separator.width">menu.separator.width</a>: 1
+<a href="#menu.separator.padding.width">menu.separator.padding.width</a>: 6
+<a href="#menu.separator.padding.height">menu.separator.padding.height</a>: 3
+
+<a href="#menu.items.bg">menu.items.bg</a>: Flat Solid
+<a href="#menu.items.bg">menu.items.bg</a>.color: #f8f5f2
+<a href="#menu.items.text.color">menu.items.text.color</a>: #000000
+<a href="#menu.items.disabled.text.color">menu.items.disabled.text.color</a>: #aaaaaa
+
+<a href="#menu.items.active.bg">menu.items.active.bg</a>: Flat Gradient Vertical
+<a href="#menu.items.active.bg">menu.items.active.bg</a>.color: #628cb2
+<a href="#menu.items.active.bg">menu.items.active.bg</a>.colorTo: #50708d
+<a href="#menu.items.active.text.color">menu.items.active.text.color</a>: #ffffff
+<a href="#menu.items.active.disabled.text.color">menu.items.active.disabled.text.color</a>: #aaaaaa
+</pre>
+<p></code>
+</p>
+<h1> <span class="mw-headline" id="Data_types"> 数据类型 </span></h1>
+<h2> <span class="mw-headline" id="Integers"> 整数型 </span></h2>
+<p> 就是普通的数字。如：</p>
+<code><pre>window.handle.width: 3</pre></code>
+<h2> <span class="mw-headline" id="Justification"> 文本对齐方式 </span></h2>
+<p>可选项有：<code>Left</code>, <code>Center</code> , <code>Right</code> 。如：</p>
+<code><pre>menu.title.text.justify: Left</pre></code>
+<h2> <span class="mw-headline" id="Textures"> 纹理 </span></h2>
+<p>Textures 选项指定了元素的基础视觉样式。这是最丰富多彩的一个配置项，要搞清楚它有一点小难度。</p>
+<p>Textures 可以是多个选项值的组合，各值不分先后顺序。下面的 <code>|</code> 表示 "或者"，<code>[]</code> 表示可选可不选。</p>
+<pre>parentrelative | ((solid | gradient gradient-type) [border] [interlaced])</pre>
+<p>下面逐个说明。</p>
+<h3> <span class="mw-headline" id="Parentrelative"> Parentrelative </span></h3>
+<p>Parentrelative 基本就是继承，不过有些元素不支持它，后面相应的地方会有说明。</p>
+<p>例子：</p>
+<code><pre>
+window.active.label.bg: Parentrelative
+window.inactive.label.bg: Parentrelative Raised
+</pre></code>
+<h3> <span class="mw-headline" id="Solid"> 均匀填充 </span></h3>
+<p>以单一颜色均匀平铺填充，如：</p>
+<code><pre>menu.items.bg:       Solid Flat
+menu.items.bg.color: #f8f5f2</pre></code>
+<h3> <span class="mw-headline" id="Gradients"> 渐变填充 </span></h3>
+<p>要使用 gradient 必须同时指定渐变类型，以及至少两个<a href="#Colors">颜色值</a>：<code>color</code> 和 <code>colorTo</code>。</p>
+<p>可选的渐变类型有：</p>
+<ul><li> Diagonal - 左上至右下
+</li><li> CrossDiagonal - 右上至左下
+</li><li> Pyramid - 径向渐变，周围至中心
+</li><li> Horizontal - 水平渐变，从左至右
+</li><li> MirrorHorizontal - 水平镜像渐变，从左至中再镜像至右
+</li><li> Vertical - 垂直渐变，从上至下
+</li><li> SplitVertical - 双向垂直渐变，从中间往上并同时往下
+</li></ul>
+<p>如：</p>
+<code><pre>menu.title.bg:         Gradient Vertical Raised 
+menu.title.bg.color:   #658fb5
+menu.title.bg.colorTo: #4d6982</pre></code>
+<h4> <span class="mw-headline" id="SplitVertical_gradients"> 双向垂直渐变 </span></h4>
+<p>SplitVertical 有两个渐变方向，所以需要多加两个<a href="#Colors">颜色值</a>：<code>color.splitTo</code> 和 <code>colorTo.splitTo</code>，用作渐变到顶部和底部的高亮颜色。如果不指定，则会按这个公式自动取值：<code>color</code> * 5/4, <code>colorTo</code> * 17/16 。</p>
+<p>例子：</p>
+<code><pre>menu.title.bg:                 Gradient SplitVertical Raised 
+menu.title.bg.color:           #658fb5
+menu.title.bg.color.splitTo:   #7595b9
+menu.title.bg.colorTo:         #4d6982
+menu.title.bg.colorTo.splitTo: #557485</pre></code>
+<h3> <span class="mw-headline" id="Border"> 边框 </span></h3>
+<p>采用均匀填充和渐变填充的元素，可以设置边框属性。边框类型有：<code>Flat</code>(扁平), <code>Raised</code>(凸起), <code>Sunken</code>(凹陷)。如果不配置框属性，元素将表现为 Raised(凸起) 效果。</p>
+<p>如果指定边框类型为 Flat(扁平) 型，则必须同时指定<a href="#Colors">边框颜色</a>，否则将看不到边框效果。</p>
+<p>例子：</p>
+<code><pre>window.active.button.unpressed.bg:              Gradient Vertical Flat Border
+window.active.button.unpressed.bg.border.color: #3d4c5a</pre></code>
+<p>Raised(凸起) 和 Sunken(凹陷) 的边缘有两种类型，默认是外边缘，指定 <code>Bevel2</code> 则表示内边缘。这可以用来表现按下、弹起状态。</p>
+<p>凹凸光影的强度也是可配置的：</p>
+<p><code>highlight</code> 值指定高亮区，取 0 值则没有高亮效果，取 128(默认值) 表示 50% 亮度，取 256 表示 100% 亮度，512 则为 200% 亮度，依此类推。</p>
+<p><code>shadow</code> 值指定阴影区，取值范围：0 至 256，取 0 值则没有阴影效果，值越大颜色越暗，取 256 则全黑。默认值为 64 (大约 25% 亮度)。</p>
+<p>例子：</p>
+<code><pre>window.inactive.button.disabled.bg:           Gradient Diagonal Raised
+window.inactive.button.disabled.bg.color:     rgb:50/54/58
+window.inactive.button.disabled.bg.colorTo:   black
+window.inactive.button.disabled.bg.highlight: 128
+window.inactive.button.disabled.bg.shadow:    64
+
+window.inactive.button.toggled.pressed.bg:          Gradient Diagonal Raised Bevel2
+window.inactive.button.toggled.pressed.bg.color:    rgb:50/54/58
+window.inactive.button.toggled.pressed.bg.colorTo:  black</pre></code>
+<h3> <span class="mw-headline" id="Interlaced"> 隔行扫描 </span></h3>
+<p>就是用两种颜色交替的画横线，所以指定 <code>interlaced</code> 的同时还需要指定扫描线的<a href="#Colors">颜色</a>。如：</p>
+<code><pre>window.inactive.title.bg: Solid Flat Interlaced
+window.inactive.title.bg.color: #f5f5f5
+window.inactive.title.bg.interlace.color: #f6f6f6</pre></code>
+<h2> <span class="mw-headline" id="Colors"> 颜色 </span></h2>
+<p>颜色就是 color，除了 RGB 值，还支持 "颜色名称"。</p>
+<h3> <span class="mw-headline" id="Color_names"> 颜色名称 </span></h3>
+<p>Wikipedia 有一份 X11 的<a rel="nofollow" class="text" href="http://en.wikipedia.org/wiki/Web_colors#X11_color_names">颜色名称</a>清单，<a rel="nofollow" class="text" href="http://en.wikipedia.org/wiki/X11_color_names">这里更详细</a>。</p>
+<p>例子：</p>
+<code><pre>menu.items.active.text.color: white
+window.active.grip.bg.color: grey40
+</pre></code>
+<h3> <span class="mw-headline" id="RGB_values"> RGB 值 </span></h3>
+<p>RGB 值有两种写法：<code>#rrggbb</code> 和 <code>rgb:rr/bb/gg</code>。不如 "茴" 字的写法多。但要命的是 <code>#fff</code> 表示 <code>#f0f0f0</code> <b>而不是</b> <code>#ffffff</code>。</p>
+<p>例子：</p>
+<code><pre>window.active.grip.bg.color: #658fb5
+window.active.label.text.color: #fff
+menu.items.active.bg.color: rgb:90/94/98
+window.active.title.bg.color: rgb:6/9/c</pre></code>
+<h2> <span class="mw-headline" id="Text_shadow_strings"> 文字阴影描述法 </span></h2>
+<p>文字的阴影效果用一段特别的文字来描述。其中包括：<code>shadow</code>, <code>shadowtint</code>, <code>shadowoffset</code>。</p>
+<p>文字默认没有阴影效果，设置 <code>shadow=y</code> 才能启用。</p>
+<p><code>shadowtint</code> 指定阴影的颜色和透明度，默认为 50% 透明的黑色。取值范围是：-100 至 100。取 0 值表示完全透明，取 100 表示完全不透明，其中正数表示黑色，负数表示白色。</p>
+<p><code>shadowoffset</code> 指定阴影与原文字的距离，默认为 1，因为阴影没有模糊效果，所以设置为 0 时阴影不可见。</p>
+<p>再说一点，描述文字阴影的文字，要写在文字的 <code>font</code> 属性下。如：</p>
+<code><pre>window.active.label.text.font:shadow=y:shadowtint=70:shadowoffset=1</pre></code>
+<h1> <span class="mw-headline" id="Theme_elements"> 元素对象 </span></h1>
+<p>就是构成窗口或菜单的各种元素，这当然就是重点啦。后面的说明会采用以下这样的格式</p>
+<table style="text-align: left">
+<tr>
+<th>类型</th>
+<td><a href="#Integers">整数型</a></td></tr>
+<tr>
+<th>默认值</th>
+<td>1</td></tr>
+<tr>
+<th>取值范围</th>
+<td>0-100</td></tr>
+<tr>
+<th>Parentrelative</th>
+<td>是否支持 Parentrelative 继承</td></tr></table>
+<p>类型，就是属性取值的类型</p>
+<p>默认值，就是不给属性明确指定值时，该属性会自动选取的值。</p>
+<p>取值范围，就是允许取值的范围。</p>
+<p><a href="#Parentrelative">继承</a>，为元素指定此属性，可以让它继承其上一级的样式，前提是此属性对该元素有效。</p>
+<h2> <span class="mw-headline" id="Geometry"> 几何特征 </span></h2>
+<h3> <span class="mw-headline" id="border.width"> border.width </span></h3>
+<table style="text-align: left;">
+<tr>
+<th>类型</th>
+<td><a href="#Integers">整数型</a></td></tr>
+<tr>
+<th>默认值</th>
+<td>1
+</td></tr>
+<tr>
+<th>取值范围</th>
+<td>0 - 100
+</td></tr></table>
+<p>窗口边框的宽度</p>
+<p>参见：<a href="#window.active.border.color"> window.active.border.color</a>, <a href="#window.inactive.border.color"> window.inactive.border.color</a>
+</p>
+<h3> <span class="mw-headline" id="menu.border.width"> menu.border.width </span></h3>
+<table style="text-align: left;">
+<tr>
+<th>类型</th>
+<td><a href="#Integers">整数型</a></td></tr>
+<tr>
+<th>默认值</th>
+<td><a href="#border.width"> border.width</a>
+</td></tr>
+<tr>
+<th>取值范围</th>
+<td>0 - 100
+</td></tr></table>
+<p>菜单边框的宽度。</p>
+<p>参见：<a href="#menu.border.color"> menu.border.color</a></p>
+<h3> <span class="mw-headline" id="menu.separator.width"> menu.separator.width </span></h3>
+<table style="text-align: left;">
+<tr>
+<th>类型</th>
+<td><a href="#Integers">整数型</a></td></tr>
+<tr>
+<th>默认值</th>
+<td>1
+</td></tr>
+<tr>
+<th>取值范围</th>
+<td>1 - 100
+</td></tr></table>
+<p>菜单分隔线的宽度。<span style="color:green"><b>(As of version 3.4.7)</b></span>
+</p>
+<h3> <span class="mw-headline" id="menu.separator.padding.width"> menu.separator.padding.width </span></h3>
+<table style="text-align: left;">
+<tr>
+<th>类型</th>
+<td><a href="#Integers">整数型</a></td></tr>
+<tr>
+<th>默认值</th>
+<td>6
+</td></tr>
+<tr>
+<th>取值范围</th>
+<td>0 - 100
+</td></tr></table>
+<p>菜单分隔线的左右间隔大小。<span style="color:green"><b>(As of version 3.4.7)</b></span>
+</p><p>参见：<a href="#menu.separator.padding.height">menu.separator.padding.height</a>
+</p>
+<h3> <span class="mw-headline" id="menu.separator.padding.height"> menu.separator.padding.height </span></h3>
+<table style="text-align: left;">
+<tr>
+<th>类型</th>
+<td><a href="#Integers">整数型</a></td></tr>
+<tr>
+<th>默认值</th>
+<td>3
+</td></tr>
+<tr>
+<th>取值范围</th>
+<td>0 - 100
+</td></tr></table>
+<p>菜单分隔线的上下间隔大小。<span style="color:green"><b>(As of version 3.4.7)</b></span>
+</p><p>参见：<a href="#menu.separator.padding.width">menu.separator.padding.width</a>
+</p>
+<h3> <span class="mw-headline" id="osd.border.width"> osd.border.width </span></h3>
+<table style="text-align: left;">
+<tr>
+<th>类型</th>
+<td><a href="#Integers">整数型</a></td></tr>
+<tr>
+<th>默认值</th>
+<td><a href="#border.width"> border.width</a>
+</td></tr>
+<tr>
+<th>取值范围</th>
+<td>0 - 100
+</td></tr></table>
+<p>Specifies the size of the border drawn on-screen-dialogs, such as the focus cycling (Alt-Tab) dialog.
+</p><p>参见：<a href="#osd.border.color"> osd.border.color</a>
+</p>
+<h3> <span class="mw-headline" id="window.client.padding.width"> window.client.padding.width </span></h3>
+<table style="text-align: left;">
+<tr>
+<th>类型</th>
+<td><a href="#Integers">整数型</a></td></tr>
+<tr>
+<th>默认值</th>
+<td><a href="#padding.width"> padding.width</a>
+</td></tr>
+<tr>
+<th>取值范围</th>
+<td>0 - 100
+</td></tr></table>
+<p>窗口次边框宽度，所谓次边框，是指窗口外边框以内的又一个边框。</p>
+<p>参见：<a href="#window.active.client.color"> window.active.client.color</a>, <a href="#window.inactive.client.color"> window.inactive.client.color</a> <a href="#window.client.padding.height">window.client.padding.height</a>
+</p>
+<h3> <span class="mw-headline" id="window.client.padding.height"> window.client.padding.height </span></h3>
+<table style="text-align: left;">
+<tr>
+<th>类型</th>
+<td><a href="#Integers">整数型</a></td></tr>
+<tr>
+<th>默认值</th>
+<td><a href="#window.client.padding.width"> window.client.padding.width</a>
+</td></tr>
+<tr>
+<th>取值范围</th>
+<td>0 - 100
+</td></tr></table>
+<p>窗口次边框高度。</p>
+<p>参见：<a href="#window.active.client.color"> window.active.client.color</a>, <a href="#window.inactive.client.color"> window.inactive.client.color</a> <a href="#window.client.padding.width">window.client.padding.width</a>
+</p>
+<h3> <span class="mw-headline" id="window.handle.width"> window.handle.width </span></h3>
+<table style="text-align: left;">
+<tr>
+<th>类型</th>
+<td><a href="#Integers">整数型</a></td></tr>
+<tr>
+<th>默认值</th>
+<td>6
+</td></tr>
+<tr>
+<th>取值范围</th>
+<td>0 - 100
+</td></tr></table>
+<p>handle 是窗口底部的装饰条</p>
+<p>参见：<a href="#window.active.handle.bg"> window.active.handle.bg</a>, <a href="#window.inactive.handle.bg"> window.inactive.handle.bg</a>, <a href="#window.active.grip.bg"> window.active.grip.bg</a>, <a href="#window.inactive.grip.bg"> window.inactive.grip.bg</a>
+</p>
+<h3> <span class="mw-headline" id="padding.width"> padding.width </span></h3>
+<table style="text-align: left;">
+<tr>
+<th>类型</th>
+<td><a href="#Integers">整数型</a></td></tr>
+<tr>
+<th>默认值</th>
+<td>3
+</td></tr>
+<tr>
+<th>取值范围</th>
+<td>0 - 100
+</td></tr></table>
+<p>相邻元素的间距，如果未指定 <a href="#padding.height">padding.height</a>，则此值对水平垂直都有效。</p>
+<p>参见：<a href="#padding.height">padding.height</a>
+</p>
+<h3> <span class="mw-headline" id="padding.height"> padding.height </span></h3>
+<table style="text-align: left;">
+<tr>
+<th>类型</th>
+<td><a href="#Integers">整数型</a></td></tr>
+<tr>
+<th>默认值</th>
+<td><a href="#padding.width">padding.width</a>
+</td></tr>
+<tr>
+<th>取值范围</th>
+<td>0 - 100
+</td></tr></table>
+<p>相邻元素的垂直间距</p>
+<p>参见：<a href="#padding.width">padding.width</a>
+</p>
+<h3> <span class="mw-headline" id="menu.overlap.x"> menu.overlap.x </span></h3>
+<table style="text-align: left;">
+<tr>
+<th>类型</th>
+<td><a href="#Integers">整数型</a></td></tr>
+<tr>
+<th>默认值</th>
+<td><a href="#menu.overlap">menu.overlap</a>
+</td></tr>
+<tr>
+<th>取值范围</th>
+<td> -100 - 100
+</td></tr></table>
+<p>次级菜单与上级菜单的横向距离。<span style="color:green"><b>(As of version 3.4.7)</b></span>
+</p><p>参见：<a href="#menu.overlap.y"> menu.overlap.y</a>
+</p>
+<h3> <span class="mw-headline" id="menu.overlap.y"> menu.overlap.y </span></h3>
+<table style="text-align: left;">
+<tr>
+<th>类型</th>
+<td><a href="#Integers">整数型</a></td></tr>
+<tr>
+<th>默认值</th>
+<td><a href="#menu.overlap">menu.overlap</a>
+</td></tr>
+<tr>
+<th>取值范围</th>
+<td> -100 - 100
+</td></tr></table>
+<p>次级菜单与上级菜单的纵向距离。<span style="color:green"><b>(As of version 3.4.7)</b></span>
+</p><p>参见：<a href="#menu.overlap.x"> menu.overlap.x</a>
+</p>
+<h3> <span class="mw-headline" id="menu.overlap"> menu.overlap </span></h3>
+<table style="text-align: left;">
+<tr>
+<th>类型</th>
+<td><a href="#Integers">整数型</a></td></tr>
+<tr>
+<th>默认值</th>
+<td>0
+</td></tr>
+<tr>
+<th>取值范围</th>
+<td> -100 - 100
+</td></tr></table>
+<p><span style="color:red"><b>这个属性已经废除。</b></span></p>
+<p>参见：<a href="#menu.overlap.x"> menu.overlap.x</a>, <a href="#menu.overlap.y"> menu.overlap.y</a>
+</p>
+<h2> <span class="mw-headline" id="Border_colors"> Border colors </span></h2>
+<h3> <span class="mw-headline" id="window.active.border.color"> window.active.border.color </span></h3>
+<table style="text-align: left">
+<tr>
+<th>类型</th>
+<td><a href="#Colors"> 颜色</a>
+</td></tr>
+<tr>
+<th>默认值</th>
+<td><a href="#border.color"> border.color</a>
+</td></tr></table>
+<p>活动窗口边框颜色</p>
+<p>参见：<a href="#border.width"> border.width</a>, <a href="#window.inactive.border.color"> window.inactive.border.color</a>
+</p>
+<h3> <span class="mw-headline" id="window.active.title.separator.color"> window.active.title.separator.color </span></h3>
+<table style="text-align: left">
+<tr>
+<th>类型</th>
+<td><a href="#Colors"> 颜色</a>
+</td></tr>
+<tr>
+<th>默认值</th>
+<td><a href="#window.active.border.color">window.active.border.color</a>
+</td></tr></table>
+<p>活动窗口标题栏与窗体之间的分隔线颜色。</p>
+<p>参见：<a href="#window.inactive.title.separator.color"> window.inactive.title.separator.color</a>
+</p>
+<h3> <span class="mw-headline" id="window.inactive.border.color"> window.inactive.border.color </span></h3>
+<table style="text-align: left">
+<tr>
+<th>类型</th>
+<td><a href="#Colors"> 颜色</a>
+</td></tr>
+<tr>
+<th>默认值</th>
+<td><a href="#window.active.border.color"> window.active.border.color</a>
+</td></tr></table>
+<p>非活动窗口边框颜色</p>
+<p>参见：<a href="#border.width"> border.width</a>, <a href="#window.active.border.color"> window.active.border.color</a>
+</p>
+<h3> <span class="mw-headline" id="window.inactive.title.separator.color"> window.inactive.title.separator.color </span></h3>
+<table style="text-align: left">
+<tr>
+<th>类型</th>
+<td><a href="#Colors"> 颜色</a>
+</td></tr>
+<tr>
+<th>默认值</th>
+<td><a href="#window.inactive.border.color">window.inactive.border.color</a>
+</td></tr></table>
+<p>非活动窗口标题栏与窗体之间的分隔线颜色。</p>
+<p>参见：<a href="#window.active.title.separator.color"> window.active.title.separator.color</a>
+</p>
+<h3> <span class="mw-headline" id="border.color"> border.color </span></h3>
+<table style="text-align: left">
+<tr>
+<th>类型</th>
+<td><a href="#Colors"> 颜色</a>
+</td></tr>
+<tr>
+<th>默认值</th>
+<td>black
+</td></tr></table>
+<p><span style="color:red"><b>这个属性已经废除。</b></span></p>
+<p>参见：<a href="#window.active.border.color"> window.active.border.color</a>, <a href="#window.inactive.border.color"> window.inactive.border.color</a>, <a href="#menu.border.color"> menu.border.color</a>
+</p>
+<h3> <span class="mw-headline" id="window.active.client.color"> window.active.client.color </span></h3>
+<table style="text-align: left">
+<tr>
+<th>类型</th>
+<td><a href="#Colors"> 颜色</a>
+</td></tr>
+<tr>
+<th>默认值</th>
+<td>white
+</td></tr></table>
+<p>活动窗口次边框颜色</p>
+<p>参见：<a href="#window.client.padding.width"> window.client.padding.width</a>, <a href="#window.inactive.client.color"> window.inactive.client.color</a>
+</p>
+<h3> <span class="mw-headline" id="window.inactive.client.color"> window.inactive.client.color </span></h3>
+<table style="text-align: left">
+<tr>
+<th>类型</th>
+<td><a href="#Colors"> 颜色</a>
+</td></tr>
+<tr>
+<th>默认值</th>
+<td>white
+</td></tr></table>
+<p>非活动窗口次边框颜色</p>
+<p>参见：<a href="#window.client.padding.width"> window.client.padding.width</a>, <a href="#window.active.client.color"> window.active.client.color</a>
+</p>
+<h3> <span class="mw-headline" id="menu.border.color"> menu.border.color </span></h3>
+<table style="text-align: left">
+<tr>
+<th>类型</th>
+<td><a href="#Colors"> 颜色</a>
+</td></tr>
+<tr>
+<th>默认值</th>
+<td><a href="#window.active.border.color"> window.active.border.color</a>
+</td></tr></table>
+<p>菜单边框颜色</p>
+<p>参见：<a href="#menu.border.width"> menu.border.width</a>
+</p>
+<h3> <span class="mw-headline" id="osd.border.color"> osd.border.color </span></h3>
+<table style="text-align: left">
+<tr>
+<th>类型</th>
+<td><a href="#Colors"> 颜色</a>
+</td></tr>
+<tr>
+<th>默认值</th>
+<td><a href="#window.active.border.color"> window.active.border.color</a>
+</td></tr></table>
+<p>Specifies the border color for on-screen-dialogs, such as the focus cycling (Alt-Tab) dialog.
+</p><p>参见：<a href="#osd.border.width"> osd.border.width</a>
+</p>
+<h2> <span class="mw-headline" id="Titlebar_colors"> 标题栏颜色 </span></h2>
+<h3> <span class="mw-headline" id="window.active.label.text.color"> window.active.label.text.color </span></h3>
+<table style="text-align: left">
+<tr>
+<th>类型</th>
+<td><a href="#Colors"> 颜色</a>
+</td></tr>
+<tr>
+<th>默认值</th>
+<td>black
+</td></tr></table>
+<p>活动窗口标题栏文字颜色</p>
+<p>参见：<a href="#window.inactive.label.text.color"> window.inactive.label.text.color</a>
+</p>
+<h3> <span class="mw-headline" id="window.inactive.label.text.color"> window.inactive.label.text.color </span></h3>
+<table style="text-align: left">
+<tr>
+<th>类型</th>
+<td><a href="#Colors"> 颜色</a>
+</td></tr>
+<tr>
+<th>默认值</th>
+<td>white
+</td></tr></table>
+<p>非活动窗口标题栏文字颜色</p>
+<p>参见：<a href="#window.active.label.text.color"> window.active.label.text.color</a>
+</p>
+<h3> <span class="mw-headline" id="window.active.button.unpressed.image.color"> window.active.button.unpressed.image.color </span></h3>
+<table style="text-align: left">
+<tr>
+<th>类型</th>
+<td><a href="#Colors"> 颜色</a>
+</td></tr>
+<tr>
+<th>默认值</th>
+<td>black
+</td></tr></table>
+<p>活动窗口标题栏按钮图案颜色，正常按钮未被按下时的状态。</p>
+<p>参见：<a href="#window.inactive.button.unpressed.image.color"> window.inactive.button.unpressed.image.color</a>
+</p>
+<h3> <span class="mw-headline" id="window.active.button.pressed.image.color"> window.active.button.pressed.image.color </span></h3>
+<table style="text-align: left">
+<tr>
+<th>类型</th>
+<td><a href="#Colors"> 颜色</a>
+</td></tr>
+<tr>
+<th>默认值</th>
+<td><a href="#window.active.button.unpressed.image.color"> window.active.button.unpressed.image.color</a>
+</td></tr></table>
+<p>活动窗口标题栏按钮被按下时的图案颜色</p>
+<p>参见：<a href="#window.inactive.button.pressed.image.color"> window.inactive.button.pressed.image.color</a>
+</p>
+<h3> <span class="mw-headline" id="window.active.button.disabled.image.color"> window.active.button.disabled.image.color </span></h3>
+<table style="text-align: left">
+<tr>
+<th>类型</th>
+<td><a href="#Colors"> 颜色</a>
+</td></tr>
+<tr>
+<th>默认值</th>
+<td>white
+</td></tr></table>
+<p>活动窗口标题栏按钮不可点击状态的图案颜色</p>
+<p>参见：<a href="#window.inactive.button.disabled.image.color"> window.inactive.button.disabled.image.color</a>
+</p>
+<h3> <span class="mw-headline" id="window.active.button.hover.image.color"> window.active.button.hover.image.color </span></h3>
+<table style="text-align: left">
+<tr>
+<th>类型</th>
+<td><a href="#Colors"> 颜色</a>
+</td></tr>
+<tr>
+<th>默认值</th>
+<td><a href="#window.active.button.unpressed.image.color"> window.active.button.unpressed.image.color</a>
+</td></tr></table>
+<p>活动窗口标题栏按钮被鼠标指向时的图案颜色</p>
+<p>参见：<a href="#window.inactive.button.hover.image.color"> window.inactive.button.hover.image.color</a>
+</p>
+<h3> <span class="mw-headline" id="window.active.button.toggled.unpressed.image.color"> window.active.button.toggled.unpressed.image.color </span></h3>
+<table style="text-align: left">
+<tr>
+<th>类型</th>
+<td><a href="#Colors"> 颜色</a>
+</td></tr>
+<tr>
+<th>默认值</th>
+<td><a href="#window.active.button.toggled.image.color"> window.active.button.toggled.image.color</a>
+</td></tr></table>
+<p>活动窗口标题栏按钮切换态未被按下时的图案颜色，如：窗口最大化之后，最大化按钮未被按下时的图案颜色。</p>
+<p>参见：<a href="#window.inactive.button.toggled.unpressed.image.color"> window.inactive.button.toggled.unpressed.image.color</a>
+</p>
+<h3> <span class="mw-headline" id="window.active.button.toggled.pressed.image.color"> window.active.button.toggled.pressed.image.color </span></h3>
+<table style="text-align: left">
+<tr>
+<th>类型</th>
+<td><a href="#Colors"> 颜色</a>
+</td></tr>
+<tr>
+<th>默认值</th>
+<td><a href="#window.active.button.pressed.image.color">window.active.button.pressed.image.color</a>
+</td></tr></table>
+<p>活动窗口标题栏按钮切换态被按下时的图案颜色，如：窗口最大化之后，最大化按钮被按下时的图案颜色。</p>
+<p>参见：<a href="#window.inactive.button.toggled.pressed.image.color">window.inactive.button.toggled.pressed.image.color</a>
+</p>
+<h3> <span class="mw-headline" id="window.active.button.toggled.hover.image.color"> window.active.button.toggled.hover.image.color </span></h3>
+<table style="text-align: left">
+<tr>
+<th>类型</th>
+<td><a href="#Colors"> 颜色</a>
+</td></tr>
+<tr>
+<th>默认值</th>
+<td><a href="#window.active.button.toggled.unpressed.image.color">window.active.button.toggled.unpressed.image.color</a>
+</td></tr></table>
+<p>活动窗口标题栏按钮切换态被鼠标指向时的图案颜色，如：窗口最大化之后，最大化按钮被鼠标指向时的图案颜色。</p>
+<p>参见：<a href="#window.inactive.button.toggled.hover.image.color">window.inactive.button.toggled.hover.image.color</a>
+</p>
+<h3> <span class="mw-headline" id="window.active.button.toggled.image.color"> window.active.button.toggled.image.color </span></h3>
+<table style="text-align: left">
+<tr>
+<th>类型</th>
+<td><a href="#Colors"> 颜色</a>
+</td></tr>
+<tr>
+<th>默认值</th>
+<td><a href="#window.active.button.pressed.image.color"> window.active.button.pressed.image.color</a>
+</td></tr></table>
+<p><span style="color:red"><b>这个属性已经废除。</b></span></p>
+<h3> <span class="mw-headline" id="window.inactive.button.unpressed.image.color"> window.inactive.button.unpressed.image.color </span></h3>
+<table style="text-align: left">
+<tr>
+<th>类型</th>
+<td><a href="#Colors"> 颜色</a>
+</td></tr>
+<tr>
+<th>默认值</th>
+<td>white
+</td></tr></table>
+<p>非活动窗口标题栏按钮图案颜色，正常按钮未被按下时的状态。
+</p><p>参见：<a href="#window.active.button.unpressed.image.color"> window.active.button.unpressed.image.color</a>
+</p>
+<h3> <span class="mw-headline" id="window.inactive.button.pressed.image.color"> window.inactive.button.pressed.image.color </span></h3>
+<table style="text-align: left">
+<tr>
+<th>类型</th>
+<td><a href="#Colors"> 颜色</a>
+</td></tr>
+<tr>
+<th>默认值</th>
+<td><a href="#window.inactive.button.unpressed.image.color"> window.inactive.button.unpressed.image.color</a>
+</td></tr></table>
+<p>非活动窗口标题栏按钮被按下时的图案颜色
+</p><p>非活动窗口标题栏按钮切换态未被按下时，也使用此颜色。
+</p><p>参见：<a href="#window.active.button.pressed.image.color"> window.active.button.pressed.image.color</a>
+</p>
+<h3> <span class="mw-headline" id="window.inactive.button.disabled.image.color"> window.inactive.button.disabled.image.color </span></h3>
+<table style="text-align: left">
+<tr>
+<th>类型</th>
+<td><a href="#Colors"> 颜色</a>
+</td></tr>
+<tr>
+<th>默认值</th>
+<td>black
+</td></tr></table>
+<p>非活动窗口标题栏按钮不可点击状态的图案颜色
+</p><p>参见：<a href="#window.active.button.disabled.image.color"> window.active.button.disabled.image.color</a>
+</p>
+<h3> <span class="mw-headline" id="window.inactive.button.hover.image.color"> window.inactive.button.hover.image.color </span></h3>
+<table style="text-align: left">
+<tr>
+<th>类型</th>
+<td><a href="#Colors"> 颜色</a>
+</td></tr>
+<tr>
+<th>默认值</th>
+<td><a href="#window.inactive.button.unpressed.image.color"> window.inactive.button.unpressed.image.color</a>
+</td></tr></table>
+<p>非活动窗口标题栏按钮被鼠标指向时的图案颜色
+</p><p>参见：<a href="#window.active.button.hover.image.color"> window.active.button.hover.image.color</a>
+</p>
+<h3> <span class="mw-headline" id="window.inactive.button.toggled.unpressed.image.color"> window.inactive.button.toggled.unpressed.image.color </span></h3>
+<table style="text-align: left">
+<tr>
+<th>类型</th>
+<td><a href="#Colors"> 颜色</a>
+</td></tr>
+<tr>
+<th>默认值</th>
+<td><a href="#window.inactive.button.toggled.image.color"> window.inactive.button.toggled.image.color</a>
+</td></tr></table>
+<p>非活动窗口标题栏按钮切换态未被按下时的图案颜色，如：窗口最大化之后，最大化按钮未被按下时的图案颜色。
+</p><p>参见：<a href="#window.active.button.toggled.unpressed.image.color"> window.active.button.toggled.unpressed.image.color</a>
+</p>
+<h3> <span class="mw-headline" id="window.inactive.button.toggled.pressed.image.color"> window.inactive.button.toggled.pressed.image.color </span></h3>
+<table style="text-align: left">
+<tr>
+<th>类型</th>
+<td><a href="#Colors"> 颜色</a>
+</td></tr>
+<tr>
+<th>默认值</th>
+<td><a href="#window.inactive.button.pressed.image.color">window.inactive.button.pressed.image.color</a>
+</td></tr></table>
+<p>非活动窗口标题栏按钮切换态被按下时的图案颜色，如：窗口最大化之后，最大化按钮被按下时的图案颜色。
+</p><p>参见：<a href="#window.active.button.toggled.pressed.image.color">window.active.button.toggled.pressed.image.color</a>
+</p>
+<h3> <span class="mw-headline" id="window.inactive.button.toggled.hover.image.color"> window.inactive.button.toggled.hover.image.color </span></h3>
+<table style="text-align: left">
+<tr>
+<th>类型</th>
+<td><a href="#Colors"> 颜色</a>
+</td></tr>
+<tr>
+<th>默认值</th>
+<td><a href="#window.inactive.button.toggled.unpressed.image.color">window.inactive.button.toggled.unpressed.image.color</a>
+</td></tr></table>
+<p>非活动窗口标题栏按钮切换态被鼠标指向时的图案颜色，如：窗口最大化之后，最大化按钮被鼠标指向时的图案颜色。
+</p><p>参见：<a href="#window.active.button.toggled.hover.image.color">window.active.button.toggled.hover.image.color</a>
+</p>
+<h3> <span class="mw-headline" id="window.inactive.button.toggled.image.color"> window.inactive.button.toggled.image.color </span></h3>
+<table style="text-align: left">
+<tr>
+<th>类型</th>
+<td><a href="#Colors"> 颜色</a>
+</td></tr>
+<tr>
+<th>默认值</th>
+<td><a href="#window.active.button.pressed.image.color"> window.active.button.pressed.image.color</a>
+</td></tr></table>
+<p><span style="color:red"><b>这个属性已经废除。</b></span></p>
+<p><br /></p>
+<h2> <span class="mw-headline" id="Active_window_textures"> 活动窗口纹理 </span></h2>
+<h3> <span class="mw-headline" id="window.active.title.bg"> window.active.title.bg </span></h3>
+<table style="text-align: left">
+<tr>
+<th>类型</th>
+<td><a href="#Textures"> texture 纹理</a>
+</td></tr>
+<tr>
+<th>默认值</th>
+<td>none
+</td></tr>
+<tr>
+<th>Parentrelative:
+</th>
+<td>no
+</td></tr></table>
+<p>活动窗口标题栏背景
+</p><p>参见：<a href="#window.inactive.title.bg"> window.inactive.title.bg</a>
+</p>
+<h3> <span class="mw-headline" id="window.active.label.bg"> window.active.label.bg </span></h3>
+<table style="text-align: left">
+<tr>
+<th>类型</th>
+<td><a href="#Textures"> texture 纹理</a>
+</td></tr>
+<tr>
+<th>默认值</th>
+<td>none
+</td></tr>
+<tr>
+<th>Parentrelative:
+</th>
+<td>yes
+</td></tr></table>
+<p>活动窗口标签背景。标签区是指标题栏上显示窗口标题文字的区域。如果指定为 parentrelative 就会继承 <a href="#window.active.title.bg"> window.active.title.bg</a>。
+</p><p>参见：<a href="#Titlebar_colors"> titlebar colors</a>, <a href="#window.inactive.label.bg"> window.inactive.label.bg</a>, <a href="#window.active.title.bg"> window.active.title.bg</a>
+</p>
+<h3> <span class="mw-headline" id="window.active.handle.bg"> window.active.handle.bg </span></h3>
+<table style="text-align: left">
+<tr>
+<th>类型</th>
+<td><a href="#Textures"> texture 纹理</a>
+</td></tr>
+<tr>
+<th>默认值</th>
+<td>none
+</td></tr>
+<tr>
+<th>Parentrelative:
+</th>
+<td>no
+</td></tr></table>
+<p>活动窗口底部装饰条 <a href="#window.inactive.handle">handle</a> 的背景
+</p><p>参见：<a href="#window.handle.width"> window.handle.width</a>, <a href="#window.inactive.handle.bg"> window.inactive.handle.bg</a>
+</p>
+<h3> <span class="mw-headline" id="window.active.grip.bg"> window.active.grip.bg </span></h3>
+<table style="text-align: left">
+<tr>
+<th>类型</th>
+<td><a href="#Textures"> texture 纹理</a>
+</td></tr>
+<tr>
+<th>默认值</th>
+<td>none
+</td></tr>
+<tr>
+<th>Parentrelative:
+</th>
+<td>yes
+</td></tr></table>
+<p>活动窗口grips 背景，grips 是底部装饰条 <a href="#window.inactive.handle">handle</a> 左右两端的小东东。如果指定为 parentrelative 就会继承 <a href="#window.active.handle.bg"> window.active.handle.bg</a>。
+</p><p>参见：<a href="#window.handle.width"> window.handle.width</a>, <a href="#window.inactive.grip.bg"> window.inactive.grip.bg</a>, <a href="#window.active.handle.bg"> window.active.handle.bg</a>
+</p>
+<h2> <span class="mw-headline" id="Inactive_window_textures"> 非活动窗口纹理 </span></h2>
+<h3> <span class="mw-headline" id="window.inactive.title.bg"> window.inactive.title.bg </span></h3>
+<table style="text-align: left">
+<tr>
+<th>类型</th>
+<td><a href="#Textures"> texture 纹理</a>
+</td></tr>
+<tr>
+<th>默认值</th>
+<td>none
+</td></tr>
+<tr>
+<th>Parentrelative:
+</th>
+<td>no
+</td></tr></table>
+<p>非活动窗口标题栏背景
+</p><p>参见：<a href="#window.active.title.bg"> window.active.title.bg</a>
+</p>
+<h3> <span class="mw-headline" id="window.inactive.label.bg"> window.inactive.label.bg </span></h3>
+<table style="text-align: left">
+<tr>
+<th>类型</th>
+<td><a href="#Textures"> texture 纹理</a>
+</td></tr>
+<tr>
+<th>默认值</th>
+<td>none
+</td></tr>
+<tr>
+<th>Parentrelative:
+</th>
+<td>yes
+</td></tr></table>
+<p>非活动窗口标签背景。标签区是指标题栏上显示窗口标题文字的区域。如果指定为 parentrelative 就会继承 <a href="#window.inactive.title.bg"> window.inactive.title.bg</a>。
+</p><p>参见：<a href="#Titlebar_colors"> titlebar colors</a>, <a href="#window.active.label.bg"> window.active.label.bg</a>, <a href="#window.inactive.title.bg"> window.inactive.title.bg</a>
+</p>
+<h3> <span class="mw-headline" id="window.inactive.handle.bg"> window.inactive.handle.bg </span></h3>
+<table style="text-align: left">
+<tr>
+<th>类型</th>
+<td><a href="#Textures"> texture 纹理</a>
+</td></tr>
+<tr>
+<th>默认值</th>
+<td>none
+</td></tr>
+<tr>
+<th>Parentrelative:
+</th>
+<td>no
+</td></tr></table>
+<p>非活动窗口底部装饰条 <a href="#window.inactive.handle">handle</a> 的背景
+</p><p>参见：<a href="#window.handle.width"> window.handle.width</a>, <a href="#window.active.handle.bg"> window.active.handle.bg</a>
+</p>
+<h3> <span class="mw-headline" id="window.inactive.grip.bg"> window.inactive.grip.bg </span></h3>
+<table style="text-align: left">
+<tr>
+<th>类型</th>
+<td><a href="#Textures"> texture 纹理</a>
+</td></tr>
+<tr>
+<th>默认值</th>
+<td>none
+</td></tr>
+<tr>
+<th>Parentrelative:
+</th>
+<td>yes
+</td></tr></table>
+<p>非活动窗口 grips 背景，grips 是底部装饰条 <a href="#window.inactive.handle">handle</a> 左右两端的小东东。如果指定为 parentrelative 就会继承 <a href="#window.active.handle.bg"> window.active.handle.bg</a>。
+</p><p>参见：<a href="#window.handle.width"> window.handle.width</a>, <a href="#window.active.grip.bg"> window.active.grip.bg</a>, <a href="#window.inactive.handle.bg"> window.inactive.handle.bg</a>
+</p>
+<h2> <span class="mw-headline" id="Active_window_button_textures"> 活动窗口标题栏按钮背景 </span></h2>
+<h3> <span class="mw-headline" id="window.active.button.unpressed.bg"> window.active.button.unpressed.bg </span></h3>
+<table style="text-align: left">
+<tr>
+<th>类型</th>
+<td><a href="#Textures"> texture 纹理</a>
+</td></tr>
+<tr>
+<th>默认值</th>
+<td>none
+</td></tr>
+<tr>
+<th>Parentrelative:
+</th>
+<td>yes
+</td></tr></table>
+<p>活动窗口标题栏按钮背景，正常按钮未被按下时的背景。如果指定为 parentrelative 就会继承 <a href="#window.active.title.bg"> window.active.title.bg</a>。
+</p><p>参见：<a href="#Titlebar_colors"> titlebar colors</a>, <a href="#window.active.title.bg"> window.active.title.bg</a>, <a href="#window.inactive.button.unpressed.bg"> window.inactive.button.unpressed.bg</a>
+</p>
+<h3> <span class="mw-headline" id="window.active.button.pressed.bg"> window.active.button.pressed.bg </span></h3>
+<table style="text-align: left">
+<tr>
+<th>类型</th>
+<td><a href="#Textures"> texture 纹理</a>
+</td></tr>
+<tr>
+<th>默认值</th>
+<td>none
+</td></tr>
+<tr>
+<th>Parentrelative:
+</th>
+<td>yes
+</td></tr></table>
+<p>活动窗口标题栏按钮被按下时的背景。如果指定为 parentrelative 就会继承 <a href="#window.active.title.bg"> window.active.title.bg</a>。
+</p><p>参见：<a href="#Titlebar_colors"> titlebar colors</a>, <a href="#window.active.title.bg"> window.active.title.bg</a>, <a href="#window.inactive.button.pressed.bg"> window.inactive.button.pressed.bg</a>
+</p>
+<h3> <span class="mw-headline" id="window.active.button.hover.bg"> window.active.button.hover.bg </span></h3>
+<table style="text-align: left">
+<tr>
+<th>类型</th>
+<td><a href="#Textures"> texture 纹理</a>
+</td></tr>
+<tr>
+<th>默认值</th>
+<td><a href="#window.active.button.unpressed.bg"> window.active.button.unpressed.bg</a>
+</td></tr>
+<tr>
+<th>Parentrelative:
+</th>
+<td>yes
+</td></tr></table>
+<p>活动窗口标题栏按钮被鼠标指向时的背景。如果指定为 parentrelative 就会继承 <a href="#window.active.title.bg"> window.active.title.bg</a>。
+</p><p>参见：<a href="#Titlebar_colors"> titlebar colors</a>, <a href="#window.active.title.bg"> window.active.title.bg</a>, <a href="#window.inactive.button.hover.bg"> window.inactive.button.hover.bg</a>
+</p>
+<h3> <span class="mw-headline" id="window.active.button.disabled.bg"> window.active.button.disabled.bg </span></h3>
+<table style="text-align: left">
+<tr>
+<th>类型</th>
+<td><a href="#Textures"> texture 纹理</a>
+</td></tr>
+<tr>
+<th>默认值</th>
+<td>none
+</td></tr>
+<tr>
+<th>Parentrelative:
+</th>
+<td>yes
+</td></tr></table>
+<p>活动窗口标题栏按钮不可点击时的背景。如果指定为 parentrelative 就会继承 <a href="#window.active.title.bg"> window.active.title.bg</a>。
+</p><p>参见：<a href="#Titlebar_colors"> titlebar colors</a>, <a href="#window.active.title.bg"> window.active.title.bg</a>, <a href="#window.inactive.button.disabled.bg"> window.inactive.button.disabled.bg</a>
+</p>
+<h3> <span class="mw-headline" id="window.active.button.toggled.unpressed.bg"> window.active.button.toggled.unpressed.bg </span></h3>
+<table style="text-align: left">
+<tr>
+<th>类型</th>
+<td><a href="#Textures"> texture 纹理</a>
+</td></tr>
+<tr>
+<th>默认值</th>
+<td><a href="#window.active.button.toggled.bg"> window.active.button.toggled.bg</a>
+</td></tr>
+<tr>
+<th>Parentrelative:
+</th>
+<td>yes
+</td></tr></table>
+<p>活动窗口标题栏按钮切换态未被按下时的背景，如：窗口最大化之后，最大化按钮未被按下时的背景。如果指定为 parentrelative 就会继承 <a href="#window.active.title.bg"> window.active.title.bg</a>。
+</p><p>参见：<a href="#Titlebar_colors"> titlebar colors</a>, <a href="#window.active.title.bg"> window.active.title.bg</a>, <a href="#window.inactive.button.toggled.unpresssed.bg"> window.inactive.button.toggled.unpressed.bg</a>
+</p>
+<h3> <span class="mw-headline" id="window.active.button.toggled.pressed.bg"> window.active.button.toggled.pressed.bg </span></h3>
+<table style="text-align: left">
+<tr>
+<th>类型</th>
+<td><a href="#Textures"> texture 纹理</a>
+</td></tr>
+<tr>
+<th>默认值</th>
+<td><a href="#window.active.button.pressed.bg"> window.active.button.pressed.bg</a>
+</td></tr>
+<tr>
+<th>Parentrelative:
+</th>
+<td>yes
+</td></tr></table>
+<p>活动窗口标题栏按钮被按下时的背景。如果指定为 parentrelative 就会继承 <a href="#window.active.title.bg"> window.active.title.bg</a>。
+</p><p>参见：<a href="#Titlebar_colors"> titlebar colors</a>, <a href="#window.active.title.bg"> window.active.title.bg</a>, <a href="#window.inactive.button.toggled.presssed.bg"> window.inactive.button.toggled.pressed.bg</a>
+</p>
+<h3> <span class="mw-headline" id="window.active.button.toggled.hover.bg"> window.active.button.toggled.hover.bg </span></h3>
+<table style="text-align: left">
+<tr>
+<th>类型</th>
+<td><a href="#Textures"> texture 纹理</a>
+</td></tr>
+<tr>
+<th>默认值</th>
+<td><a href="#window.active.button.toggled.unpressed.bg"> window.active.button.toggled.unpressed.bg</a>
+</td></tr>
+<tr>
+<th>Parentrelative:
+</th>
+<td>yes
+</td></tr></table>
+<p>活动窗口标题栏按钮切换态被鼠标指向时的背景，如：窗口最大化之后，最大化按钮被鼠标指向时的背景。如果指定为 parentrelative 就会继承 <a href="#window.active.title.bg"> window.active.title.bg</a>。
+</p><p>参见：<a href="#Titlebar_colors"> titlebar colors</a>, <a href="#window.active.title.bg"> window.active.title.bg</a>, <a href="#window.inactive.button.toggled.hover.bg"> window.inactive.button.toggled.hover.bg</a>
+</p>
+<h3> <span class="mw-headline" id="window.active.button.toggled.bg"> window.active.button.toggled.bg </span></h3>
+<table style="text-align: left">
+<tr>
+<th>类型</th>
+<td><a href="#Textures"> texture 纹理</a>
+</td></tr>
+<tr>
+<th>默认值</th>
+<td><a href="#window.active.button.pressed.bg"> window.active.button.pressed.bg</a>
+</td></tr>
+<tr>
+<th>Parentrelative:
+</th>
+<td>yes
+</td></tr></table>
+<p><span style="color:red"><b>这个属性已经废除。</b></span></p>
+<h2> <span class="mw-headline" id="Inactive_window_button_textures"> 非活动窗口按钮背景 </span></h2>
+<h3> <span class="mw-headline" id="window.inactive.button.unpressed.bg"> window.inactive.button.unpressed.bg </span></h3>
+<table style="text-align: left">
+<tr>
+<th>类型</th>
+<td><a href="#Textures"> texture 纹理</a>
+</td></tr>
+<tr>
+<th>默认值</th>
+<td>none
+</td></tr>
+<tr>
+<th>Parentrelative:
+</th>
+<td>yes
+</td></tr></table>
+<p>非活动窗口标题栏按钮背景，正常按钮未被按下时的背景。如果指定为 parentrelative 就会继承 <a href="#window.inactive.title.bg"> window.inactive.title.bg</a>。
+</p><p>参见：<a href="#Titlebar_colors"> titlebar colors</a>, <a href="#window.inactive.title.bg"> window.inactive.title.bg</a>, <a href="#window.active.button.unpressed.bg"> window.active.button.unpressed.bg</a>
+</p>
+<h3> <span class="mw-headline" id="window.inactive.button.pressed.bg"> window.inactive.button.pressed.bg </span></h3>
+<table style="text-align: left">
+<tr>
+<th>类型</th>
+<td><a href="#Textures"> texture 纹理</a>
+</td></tr>
+<tr>
+<th>默认值</th>
+<td>none
+</td></tr>
+<tr>
+<th>Parentrelative:
+</th>
+<td>yes
+</td></tr></table>
+<p>非活动窗口标题栏按钮被按下时的背景。如果指定为 parentrelative 就会继承 <a href="#window.inactive.title.bg"> window.inactive.title.bg</a>。
+</p><p>参见：<a href="#Titlebar_colors"> titlebar colors</a>, <a href="#window.inactive.title.bg"> window.inactive.title.bg</a>, <a href="#window.active.button.pressed.bg"> window.active.button.pressed.bg</a>
+</p>
+<h3> <span class="mw-headline" id="window.inactive.button.hover.bg"> window.inactive.button.hover.bg </span></h3>
+<table style="text-align: left">
+<tr>
+<th>类型</th>
+<td><a href="#Textures"> texture 纹理</a>
+</td></tr>
+<tr>
+<th>默认值</th>
+<td><a href="#window.inactive.button.unpressed.bg"> window.inactive.button.unpressed.bg</a>
+</td></tr>
+<tr>
+<th>Parentrelative:
+</th>
+<td>yes
+</td></tr></table>
+<p>非活动窗口标题栏按钮未被按下时的背景。如果指定为 parentrelative 就会继承 <a href="#window.inactive.title.bg"> window.inactive.title.bg</a>。
+</p><p>参见：<a href="#Titlebar_colors"> titlebar colors</a>, <a href="#window.inactive.title.bg"> window.inactive.title.bg</a>, <a href="#window.active.button.hover.bg"> window.active.button.hover.bg</a>
+</p>
+<h3> <span class="mw-headline" id="window.inactive.button.disabled.bg"> window.inactive.button.disabled.bg </span></h3>
+<table style="text-align: left">
+<tr>
+<th>类型</th>
+<td><a href="#Textures"> texture 纹理</a>
+</td></tr>
+<tr>
+<th>默认值</th>
+<td>none
+</td></tr>
+<tr>
+<th>Parentrelative:
+</th>
+<td>yes
+</td></tr></table>
+<p>非活动窗口标题栏按钮不可点击时的背景。如果指定为 parentrelative 就会继承 <a href="#window.inactive.title.bg"> window.inactive.title.bg</a>。
+</p><p>参见：<a href="#Titlebar_colors"> titlebar colors</a>, <a href="#window.inactive.title.bg"> window.inactive.title.bg</a>, <a href="#window.active.button.disabled.bg"> window.active.button.disabled.bg</a>
+</p>
+<h3> <span class="mw-headline" id="window.inactive.button.toggled.unpressed.bg"> window.inactive.button.toggled.unpressed.bg </span></h3>
+<table style="text-align: left">
+<tr>
+<th>类型</th>
+<td><a href="#Textures"> texture 纹理</a>
+</td></tr>
+<tr>
+<th>默认值</th>
+<td><a href="#window.inactive.button.toggled.bg"> window.inactive.button.toggled.bg</a>
+</td></tr>
+<tr>
+<th>Parentrelative:
+</th>
+<td>yes
+</td></tr></table>
+<p>非活动窗口标题栏按钮切换态未被按下时的背景，如：窗口最大化之后，最大化按钮未被按下时的背景。如果指定为 parentrelative 就会继承 <a href="#window.inactive.title.bg">。
+</p><p>参见：<a href="#Titlebar_colors"> titlebar colors</a>, <a href="#window.inactive.title.bg"> window.inactive.title.bg</a>, <a href="#window.active.button.toggled.unpresssed.bg"> window.active.button.toggled.unpressed.bg</a>
+</p>
+<h3> <span class="mw-headline" id="window.inactive.button.toggled.pressed.bg"> window.inactive.button.toggled.pressed.bg </span></h3>
+<table style="text-align: left">
+<tr>
+<th>类型</th>
+<td><a href="#Textures"> texture 纹理</a>
+</td></tr>
+<tr>
+<th>默认值</th>
+<td><a href="#window.inactive.button.pressed.bg"> window.inactive.button.pressed.bg</a>
+</td></tr>
+<tr>
+<th>Parentrelative:
+</th>
+<td>yes
+</td></tr></table>
+<p>非活动窗口标题栏按钮切换态被按下时的背景。如果指定为 parentrelative 就会继承 <a href="#window.inactive.title.bg"> window.inactive.title.bg</a>。
+</p><p>参见：<a href="#Titlebar_colors"> titlebar colors</a>, <a href="#window.inactive.title.bg"> window.inactive.title.bg</a>, <a href="#window.active.button.toggled.presssed.bg"> window.active.button.toggled.pressed.bg</a>
+</p>
+<h3> <span class="mw-headline" id="window.inactive.button.toggled.hover.bg"> window.inactive.button.toggled.hover.bg </span></h3>
+<table style="text-align: left">
+<tr>
+<th>类型</th>
+<td><a href="#Textures"> texture 纹理</a>
+</td></tr>
+<tr>
+<th>默认值</th>
+<td><a href="#window.inactive.button.toggled.unpressed.bg"> window.inactive.button.toggled.unpressed.bg</a>
+</td></tr>
+<tr>
+<th>Parentrelative:
+</th>
+<td>yes
+</td></tr></table>
+<p>非活动窗口标题栏按钮切换态被鼠标指向时的背景，如：窗口最大化之后，最大化按钮被鼠标指向时的背景。如果指定为 parentrelative 就会继承 <a href="#window.inactive.title.bg">。
+</p><p>参见：<a href="#Titlebar_colors"> titlebar colors</a>, <a href="#window.inactive.title.bg"> window.inactive.title.bg</a>, <a href="#window.active.button.toggled.hover.bg"> window.active.button.toggled.hover.bg</a>
+</p>
+<h3> <span class="mw-headline" id="window.inactive.button.toggled.bg"> window.inactive.button.toggled.bg </span></h3>
+<table style="text-align: left">
+<tr>
+<th>类型</th>
+<td><a href="#Textures"> texture 纹理</a>
+</td></tr>
+<tr>
+<th>默认值</th>
+<td><a href="#window.inactive.button.pressed.bg"> window.inactive.button.pressed.bg</a>
+</td></tr>
+<tr>
+<th>Parentrelative:
+</th>
+<td>yes
+</td></tr></table>
+<p><span style="color:red"><b>这个属性已经废除。</b></span></p>
+<h2> <span class="mw-headline" id="Menu_colors"> 菜单颜色 </span></h2>
+<h3> <span class="mw-headline" id="menu.title.text.color"> menu.title.text.color </span></h3>
+<table style="text-align: left">
+<tr>
+<th>类型</th>
+<td><a href="#Colors"> 颜色</a>
+</td></tr>
+<tr>
+<th>默认值</th>
+<td>black
+</td></tr></table>
+<p>菜单标题文字颜色
+</p>
+<h3> <span class="mw-headline" id="menu.items.text.color"> menu.items.text.color </span></h3>
+<table style="text-align: left">
+<tr>
+<th>类型</th>
+<td><a href="#Colors"> 颜色</a>
+</td></tr>
+<tr>
+<th>默认值</th>
+<td>white
+</td></tr></table>
+<p>菜单项文字颜色
+</p>
+<h3> <span class="mw-headline" id="menu.items.disabled.text.color"> menu.items.disabled.text.color </span></h3>
+<table style="text-align: left">
+<tr>
+<th>类型</th>
+<td><a href="#Colors"> 颜色</a>
+</td></tr>
+<tr>
+<th>默认值</th>
+<td>black
+</td></tr></table>
+<p>不可点击的菜单项颜色
+</p>
+<h3> <span class="mw-headline" id="menu.items.active.text.color"> menu.items.active.text.color </span></h3>
+<table style="text-align: left">
+<tr>
+<th>类型</th>
+<td><a href="#Colors"> 颜色</a>
+</td></tr>
+<tr>
+<th>默认值</th>
+<td>black
+</td></tr></table>
+<p>被选中菜单项的文字颜色
+</p>
+<h3> <span class="mw-headline" id="menu.items.active.disabled.text.color"> menu.items.active.disabled.text.color </span></h3>
+<table style="text-align: left">
+<tr>
+<th>类型</th>
+<td><a href="#Colors"> 颜色</a>
+</td></tr>
+<tr>
+<th>默认值</th>
+<td><a href="#menu.items.disabled.text.color"> menu.items.disabled.text.color</a>
+</td></tr></table>
+<p>不可点击的菜单项被选中时的文字颜色
+</p>
+<h3> <span class="mw-headline" id="menu.separator.color"> menu.separator.color </span></h3>
+<table style="text-align: left">
+<tr>
+<th>类型</th>
+<td><a href="#Colors"> 颜色</a>
+</td></tr>
+<tr>
+<th>默认值</th>
+<td><a href="#menu.items.text.color">menu.items.text.color</a>
+</td></tr></table>
+<p>菜单分隔线的颜色 <span style="color:green"><b>(As of version 3.4.7)</b></span>
+</p><p>参见：<a href="#menu.items.text.color">menu.items.text.color</a>
+</p>
+<h2> <span class="mw-headline" id="Menu_textures"> 菜单纹理 </span></h2>
+<h3> <span class="mw-headline" id="menu.items.bg"> menu.items.bg </span></h3>
+<table style="text-align: left">
+<tr>
+<th>类型</th>
+<td><a href="#Textures"> texture 纹理</a>
+</td></tr>
+<tr>
+<th>默认值</th>
+<td>none
+</td></tr>
+<tr>
+<th>Parentrelative:
+</th>
+<td>no
+</td></tr></table>
+<p>菜单项背景
+</p><p>参见：<a href="#menu.items.active.bg"> menu.items.active.bg</a>
+</p>
+<h3> <span class="mw-headline" id="menu.items.active.bg"> menu.items.active.bg </span></h3>
+<table style="text-align: left">
+<tr>
+<th>类型</th>
+<td><a href="#Textures"> texture 纹理</a>
+</td></tr>
+<tr>
+<th>默认值</th>
+<td>none
+</td></tr>
+<tr>
+<th>Parentrelative:
+</th>
+<td>yes
+</td></tr></table>
+<p>菜单项被选中时的背景(不管该项是否能被点击)，如果指定为 parentrelative 就会继承 <a href="#menu.items.bg"> menu.items.bg</a>。
+</p><p>参见：<a href="#menu.items.bg"> menu.items.bg</a>
+</p>
+<h3> <span class="mw-headline" id="menu.title.bg"> menu.title.bg </span></h3>
+<table style="text-align: left">
+<tr>
+<th>类型</th>
+<td><a href="#Textures"> texture 纹理</a>
+</td></tr>
+<tr>
+<th>默认值</th>
+<td>none
+</td></tr>
+<tr>
+<th>Parentrelative:
+</th>
+<td>yes
+</td></tr></table>
+<p>菜单标题背景，如果指定为 parentrelative 就会继承 <a href="#menu.items.bg"> menu.items.bg</a>。
+</p><p>参见：<a href="#menu.items.bg"> menu.items.bg</a>
+</p>
+<h2> <span class="mw-headline" id="OSD_textures"> OSD textures </span></h2>
+<h3> <span class="mw-headline" id="osd.bg"> osd.bg </span></h3>
+<table style="text-align: left">
+<tr>
+<th>类型</th>
+<td><a href="#Textures"> texture 纹理</a>
+</td></tr>
+<tr>
+<th>默认值</th>
+<td><a href="#window.active.title.bg">window.active.title.bg</a>
+</td></tr>
+<tr>
+<th>Parentrelative:
+</th>
+<td>no
+</td></tr></table>
+<p>Specifies the background for on-screen-dialogs, such as the focus cycling (Alt-Tab) dialog.
+</p>
+<h3> <span class="mw-headline" id="osd.label.bg"> osd.label.bg </span></h3>
+<table style="text-align: left">
+<tr>
+<th>类型</th>
+<td><a href="#Textures"> texture 纹理</a>
+</td></tr>
+<tr>
+<th>默认值</th>
+<td><a href="#window.active.label.bg">window.active.label.bg</a>
+</td></tr>
+<tr>
+<th>Parentrelative:
+</th>
+<td>yes
+</td></tr></table>
+<p>Specifies the background for text in on-screen-dialogs, such as the focus cycling (Alt-Tab) dialog.
+</p>
+<h3> <span class="mw-headline" id="osd.hilight.bg"> osd.hilight.bg </span></h3>
+<table style="text-align: left">
+<tr>
+<th>类型</th>
+<td><a href="#Textures"> texture 纹理</a>
+</td></tr>
+<tr>
+<th>默认值</th>
+<td><a href="#window.active.label.bg">window.active.label.bg</a>, if it is not parentrelative.  Otherwise, <a href="#window.active.title.bg">window.active.title.bg</a>
+</td></tr>
+<tr>
+<th>Parentrelative:
+</th>
+<td>no
+</td></tr></table>
+<p>Specifies the texture for the selected desktop in the desktop cycling (pager) dialog.
+</p>
+<h3> <span class="mw-headline" id="osd.unhilight.bg"> osd.unhilight.bg </span></h3>
+<table style="text-align: left">
+<tr>
+<th>类型</th>
+<td><a href="#Textures"> texture 纹理</a>
+</td></tr>
+<tr>
+<th>默认值</th>
+<td><a href="#window.inactive.label.bg">window.inactive.label.bg</a>, if it is not parentrelative.  Otherwise, <a href="#window.inactive.title.bg">window.inactive.title.bg</a>
+</td></tr>
+<tr>
+<th>Parentrelative:
+</th>
+<td>no
+</td></tr></table>
+<p>Specifies the texture for unselected desktops in the desktop cycling (pager) dialog.
+</p>
+<h2> <span class="mw-headline" id="OSD_colors"> OSD colors </span></h2>
+<h3> <span class="mw-headline" id="osd.label.text.color"> osd.label.text.color </span></h3>
+<table style="text-align: left">
+<tr>
+<th>类型</th>
+<td><a href="#Colors"> 颜色</a>
+</td></tr>
+<tr>
+<th>默认值</th>
+<td>black
+</td></tr></table>
+<p>Specifies the text color for on-screen-dialogs, such as the focus cycling (Alt-Tab) dialog.
+</p>
+<h3> <span class="mw-headline" id="osd.hilight.bg.color"> osd.hilight.bg.color </span></h3>
+<table style="text-align: left">
+<tr>
+<th>类型</th>
+<td><a href="#Colors"> 颜色</a>
+</td></tr>
+<tr>
+<th>默认值</th>
+<td>black
+</td></tr></table>
+<p>Specifies the color for selected desktops in the desktop cycling (pager) dialog.
+</p>
+<h3> <span class="mw-headline" id="osd.unhilight.bg.color"> osd.unhilight.bg.color </span></h3>
+<table style="text-align: left">
+<tr>
+<th>类型</th>
+<td><a href="#Colors"> 颜色</a>
+</td></tr>
+<tr>
+<th>默认值</th>
+<td>black
+</td></tr></table>
+<p>Specifies the color for unselected desktops in the desktop cycling (pager) dialog.
+</p>
+<h2> <span class="mw-headline" id="Text_justification"> 文本对齐方式 </span></h2>
+<h3> <span class="mw-headline" id="window.label.text.justify"> window.label.text.justify </span></h3>
+<table style="text-align: left">
+<tr>
+<th>类型</th>
+<td><a href="#Justification">对齐方式</a>
+</td></tr>
+<tr>
+<th>默认值</th>
+<td>Left
+</td></tr></table>
+<p>窗口标题文字对齐方式，对活动窗口和非活动窗口都生效。
+</p>
+<h3> <span class="mw-headline" id="menu.title.text.justify"> menu.title.text.justify </span></h3>
+<table style="text-align: left">
+<tr>
+<th>类型</th>
+<td><a href="#Justification">对齐方式</a>
+</td></tr>
+<tr>
+<th>默认值</th>
+<td>Left
+</td></tr></table>
+<p>菜单标题文本对齐方式
+</p>
+<h2> <span class="mw-headline" id="Text_shadows"> 文字阴影效果 </span></h2>
+<h3> <span class="mw-headline" id="window.active.label.text.font"> window.active.label.text.font </span></h3>
+<table style="text-align: left;">
+<tr>
+<th>类型</th>
+<td><a href="#Text_shadow_strings">文字阴影描述</a>
+</td></tr>
+<tr>
+<th>默认值</th>
+<td>no shadow
+</td></tr></table>
+<p>活动窗口标题栏文字阴影
+</p><p>参见：<a href="#window.inactive.label.text.font">window.inactive.label.text.font</a>
+</p>
+<h3> <span class="mw-headline" id="window.inactive.label.text.font"> window.inactive.label.text.font </span></h3>
+<table style="text-align: left;">
+<tr>
+<th>类型</th>
+<td><a href="#Text_shadow_strings">文字阴影描述</a>
+</td></tr>
+<tr>
+<th>默认值</th>
+<td>no shadow
+</td></tr></table>
+<p>非活动窗口标题栏文字阴影
+</p><p>参见：<a href="#window.active.label.text.font"> window.active.label.text.font</a>
+</p>
+<h3> <span class="mw-headline" id="menu.items.font"> menu.items.font </span></h3>
+<table style="text-align: left;">
+<tr>
+<th>类型</th>
+<td><a href="#Text_shadow_strings">文字阴影描述</a>
+</td></tr>
+<tr>
+<th>默认值</th>
+<td>no shadow
+</td></tr></table>
+<p>菜单项文字阴影效果
+</p>
+<h3> <span class="mw-headline" id="menu.title.text.font"> menu.title.text.font </span></h3>
+<table style="text-align: left;">
+<tr>
+<th>类型</th>
+<td><a href="#Text_shadow_strings">文字阴影描述</a>
+</td></tr>
+<tr>
+<th>默认值</th>
+<td>no shadow
+</td></tr></table>
+<p>菜单标题文字阴影效果
+</p>
+<h3> <span class="mw-headline" id="osd.label.text.font"> osd.label.text.font </span></h3>
+<table style="text-align: left;">
+<tr>
+<th>类型</th>
+<td><a href="#Text_shadow_strings">文字阴影描述</a>
+</td></tr>
+<tr>
+<th>默认值</th>
+<td>no shadow
+</td></tr></table>
+<p>Specifies the text shadow for on-screen-dialogs, such as the focus cycling (Alt-Tab) dialog.
+</p>
+<h1> <span class="mw-headline" id="Dialogs"> 对话框 </span></h1>
+<p>Openbox 对话框，例如：</p>
+<ul><li><a href="http://openbox.org/wiki/Help:Actions#Exit" title="Help:Actions">关闭</a> 程序时的确认关闭对话框。
+</li><li>程序崩溃时的弹出框
+</li></ul>
+<p>对话框里有些按钮，如 <b>确定</b> <b>取消</b> 等。这些按钮的背景与 <a href="http://openbox.org/wiki/Help:Themes#Active_window_button_textures" title="Help:Themes">window.active.button.*.bg</a>相同，文字颜色则与 <a href="http://openbox.org/wiki/Help:Themes#window.active.button.unpressed.image.color" title="Help:Themes">window.active.button.*.image.color</a> 相同。
+</p>
+<h1> <span class="mw-headline" id="Button_images"> 按钮装饰图案 </span></h1>
+<p>标题栏按钮图案、子菜单标记图案，是一种 1-bit xbm (X Bitmaps) 图案文件。
+</p><p>这些图案文件，请存放在主题文件 <code>themerc</code> 所在的目录，就如 <a href="#Theme_file_structure">主题文件结构</a> 说明的那样。
+</p><p>系统内置的图案文件位于 <code>/usr/share/doc/openbox/xbm</code>。
+</p>
+<h2> <span class="mw-headline" id="Maximized_button"> 最大化按钮 </span></h2>
+<h3> <span class="mw-headline" id="max.xbm"> max.xbm </span></h3>
+<table style="text-align: left">
+<tr>
+<th>默认值</th>
+<td>系统内置
+</td></tr></table>
+<p>最大化按钮正常未被按下时
+</p>
+<h3> <span class="mw-headline" id="max_toggled.xbm"> max_toggled.xbm </span></h3>
+<table style="text-align: left">
+<tr>
+<th>默认值</th>
+<td>指定的 max.xbm ，否则使用系统内置图案
+</td></tr></table>
+<p>最大化按钮切换态图案
+</p>
+<h3> <span class="mw-headline" id="max_pressed.xbm"> max_pressed.xbm </span></h3>
+<table style="text-align: left">
+<tr>
+<th>默认值</th>
+<td>max.xbm, 内置图案
+</td></tr></table>
+<p>最大化按钮被按下时
+</p>
+<h3> <span class="mw-headline" id="max_disabled.xbm"> max_disabled.xbm </span></h3>
+<table style="text-align: left">
+<tr>
+<th>默认值</th>
+<td>max.xbm, 内置图案
+</td></tr></table>
+<p>最大化按钮不可点击时
+</p>
+<h3> <span class="mw-headline" id="max_hover.xbm"> max_hover.xbm </span></h3>
+<table style="text-align: left">
+<tr>
+<th>默认值</th>
+<td>max.xbm, 内置图案
+</td></tr></table>
+<p>最大化按钮被鼠标指向时
+</p>
+<h3> <span class="mw-headline" id="max_toggled_pressed.xbm"> max_toggled_pressed.xbm </span></h3>
+<table style="text-align: left">
+<tr>
+<th>默认值</th>
+<td>max_toggled.xbm, max.xbm, 内置图案
+</td></tr></table>
+<p>最大化按钮切换被按下时
+</p>
+<h3> <span class="mw-headline" id="max_toggled_hover.xbm"> max_toggled_hover.xbm </span></h3>
+<table style="text-align: left">
+<tr>
+<th>默认值</th>
+<td>max_toggled.xbm, max.xbm, 内置图案
+</td></tr></table>
+<p>最大化按钮切换被鼠标指向时
+</p>
+<h2> <span class="mw-headline" id="Iconify_button"> 最小化按钮 </span></h2>
+<h3> <span class="mw-headline" id="iconify.xbm"> iconify.xbm </span></h3>
+<table style="text-align: left">
+<tr>
+<th>默认值</th>
+<td>系统内置
+</td></tr></table>
+<p>最小化按钮正常未被按下时
+</p>
+<h3> <span class="mw-headline" id="iconify_pressed.xbm"> iconify_pressed.xbm </span></h3>
+<table style="text-align: left">
+<tr>
+<th>默认值</th>
+<td>iconify.xbm, 内置图案
+</td></tr></table>
+<p>最小化按钮被按下时
+</p>
+<h3> <span class="mw-headline" id="iconify_disabled.xbm"> iconify_disabled.xbm </span></h3>
+<table style="text-align: left">
+<tr>
+<th>默认值</th>
+<td>iconify.xbm, 内置图案
+</td></tr></table>
+<p>最小化按钮不可点击时
+</p>
+<h3> <span class="mw-headline" id="iconify_hover.xbm"> iconify_hover.xbm </span></h3>
+<table style="text-align: left">
+<tr>
+<th>默认值</th>
+<td>iconify.xbm, 内置图案
+</td></tr></table>
+<p>最小化按钮被鼠标指向时
+</p>
+<h2> <span class="mw-headline" id="Close_button"> 关闭按钮 </span></h2>
+<h3> <span class="mw-headline" id="close.xbm"> close.xbm </span></h3>
+<table style="text-align: left">
+<tr>
+<th>默认值</th>
+<td>系统内置
+</td></tr></table>
+<p>关闭按钮正常未被按下时
+</p>
+<h3> <span class="mw-headline" id="close_pressed.xbm"> close_pressed.xbm </span></h3>
+<table style="text-align: left">
+<tr>
+<th>默认值</th>
+<td>close.xbm, 内置图案
+</td></tr></table>
+<p>关闭按钮被按下时
+</p>
+<h3> <span class="mw-headline" id="close_disabled.xbm"> close_disabled.xbm </span></h3>
+<table style="text-align: left">
+<tr>
+<th>默认值</th>
+<td>close.xbm, 内置图案
+</td></tr></table>
+<p>关闭按钮不可点击时
+</p>
+<h3> <span class="mw-headline" id="close_hover.xbm"> close_hover.xbm </span></h3>
+<table style="text-align: left">
+<tr>
+<th>默认值</th>
+<td>close.xbm, 内置图案
+</td></tr></table>
+<p>关闭按钮被鼠标指向时
+</p>
+<h2> <span class="mw-headline" id="All-desktops_button"> All-desktops button </span></h2>
+<h3> <span class="mw-headline" id="desk.xbm"> desk.xbm </span></h3>
+<table style="text-align: left">
+<tr>
+<th>默认值</th>
+<td>Internal default
+</td></tr></table>
+<p>All-desktops button in its default, unpressed state.
+</p>
+<h3> <span class="mw-headline" id="desk_toggled.xbm"> desk_toggled.xbm </span></h3>
+<table style="text-align: left">
+<tr>
+<th>默认值</th>
+<td>If desk.xbm is present, it uses that.  If not, it has a separate internal default
+</td></tr></table>
+<p>All-desktops button when it is in toggled state.
+</p>
+<h3> <span class="mw-headline" id="desk_pressed.xbm"> desk_pressed.xbm </span></h3>
+<table style="text-align: left">
+<tr>
+<th>默认值</th>
+<td>desk.xbm, or its internal default
+</td></tr></table>
+<p>All-desktops button when pressed.
+</p>
+<h3> <span class="mw-headline" id="desk_disabled.xbm"> desk_disabled.xbm </span></h3>
+<table style="text-align: left">
+<tr>
+<th>默认值</th>
+<td>desk.xbm, or its internal default
+</td></tr></table>
+<p>All-desktops button when disabled.
+</p>
+<h3> <span class="mw-headline" id="desk_hover.xbm"> desk_hover.xbm </span></h3>
+<table style="text-align: left">
+<tr>
+<th>默认值</th>
+<td>desk.xbm, or its internal default
+</td></tr></table>
+<p>All-desktops button when mouse is over it.
+</p>
+<h3> <span class="mw-headline" id="desk_toggled_pressed.xbm"> desk_toggled_pressed.xbm </span></h3>
+<table style="text-align: left">
+<tr>
+<th>默认值</th>
+<td>desk_toggled.xbm, or desk.xbm, or its internal default
+</td></tr></table>
+<p>All-desktops button when pressed, in toggled state.
+</p>
+<h3> <span class="mw-headline" id="desk_toggled_hover.xbm"> desk_toggled_hover.xbm </span></h3>
+<table style="text-align: left">
+<tr>
+<th>默认值</th>
+<td>desk_toggled.xbm, or desk.xbm, or its internal default
+</td></tr></table>
+<p>All-desktops button when mouse is over it, in toggled state.
+</p>
+<h2> <span class="mw-headline" id="Shade_button"> Shade button </span></h2>
+<h3> <span class="mw-headline" id="shade.xbm"> shade.xbm </span></h3>
+<table style="text-align: left">
+<tr>
+<th>默认值</th>
+<td>Internal default
+</td></tr></table>
+<p>Shade button in its default, unpressed state.
+</p>
+<h3> <span class="mw-headline" id="shade_toggled.xbm"> shade_toggled.xbm </span></h3>
+<table style="text-align: left">
+<tr>
+<th>默认值</th>
+<td>If shade.xbm is present, it uses that.  If not, it has a separate internal default
+</td></tr></table>
+<p>Shade button when it is in toggled state.
+</p>
+<h3> <span class="mw-headline" id="shade_pressed.xbm"> shade_pressed.xbm </span></h3>
+<table style="text-align: left">
+<tr>
+<th>默认值</th>
+<td>shade.xbm, or its internal default
+</td></tr></table>
+<p>Shade button when pressed.
+</p>
+<h3> <span class="mw-headline" id="shade_disabled.xbm"> shade_disabled.xbm </span></h3>
+<table style="text-align: left">
+<tr>
+<th>默认值</th>
+<td>shade.xbm, or its internal default
+</td></tr></table>
+<p>Shade button when disabled.
+</p>
+<h3> <span class="mw-headline" id="shade_hover.xbm"> shade_hover.xbm </span></h3>
+<table style="text-align: left">
+<tr>
+<th>默认值</th>
+<td>shade.xbm, or its internal default
+</td></tr></table>
+<p>Shade button when mouse is over it.
+</p>
+<h3> <span class="mw-headline" id="shade_toggled_pressed.xbm"> shade_toggled_pressed.xbm </span></h3>
+<table style="text-align: left">
+<tr>
+<th>默认值</th>
+<td>shade_toggled.xbm, or shade.xbm, or its internal default
+</td></tr></table>
+<p>Shade button when pressed, in toggled state.
+</p>
+<h3> <span class="mw-headline" id="shade_toggled_hover.xbm"> shade_toggled_hover.xbm </span></h3>
+<table style="text-align: left">
+<tr>
+<th>默认值</th>
+<td>shade_toggled.xbm, or shade.xbm, or its internal default
+</td></tr></table>
+<p>Shade button when mouse is over it, in toggled state.
+</p>
+<h2> <span class="mw-headline" id="Submenu_bullet"> 子菜单标记 </span></h2>
+<h3> <span class="mw-headline" id="bullet.xbm"> bullet.xbm </span></h3>
+<table style="text-align: left">
+<tr>
+<th>默认值</th>
+<td>系统内置
+</td></tr></table>
+<p>当菜单项有下一级子菜单时，会显示此标记
+</p>
+<!-- 
+NewPP limit report
+Preprocessor node count: 760/1000000
+Post‐expand include size: 0/2097152 bytes
+Template argument size: 0/2097152 bytes
+Expensive parser function count: 0/100
+-->
+
+<!-- Saved in parser cache with key openbox-mw_:pcache:idhash:143-0!*!0!!en!2!* and timestamp 20150116163738 -->
+</div><div class="printfooter">
+Retrieved from "<a href="http://openbox.org/oldwiki/index.php?title=Help:Themes&amp;oldid=3591">http://openbox.org/oldwiki/index.php?title=Help:Themes&amp;oldid=3591</a>"</div>
+<!-- catlinks are always empty??? 
+			<div id="catlinks"><div id='catlinks' class='catlinks catlinks-allhidden'></div></div>-->
+			<!-- end content -->
+			<div class="visualClear"></div>
+		</div>
+	</div>
+		</div>
+		<div id="column-one">
+	<div id="p-cactions" class="portlet">
+		<h5>Views</h5>
+		<div class="pBody">
+			<ul>
+					 <li id="ca-nstab-help" class="selected"><a href="http://openbox.org/wiki/Help:Themes"Array>Help page</a></li>
+					 <li id="ca-talk" class="new"><a href="http://openbox.org/oldwiki/index.php?title=Help_talk:Themes&amp;action=edit&amp;redlink=1"Array>Discussion</a></li>
+					 <li id="ca-viewsource"><a href="http://openbox.org/oldwiki/index.php?title=Help:Themes&amp;action=edit"Array>View source</a></li>
+					 <li id="ca-history"><a href="http://openbox.org/oldwiki/index.php?title=Help:Themes&amp;action=history"Array>History</a></li>
+				</ul>
+		</div>
+	</div>
+	<div class="portlet" id="p-personal">
+		<h5>Personal tools</h5>
+		<div class="pBody">
+			<ul>
+				<li id=""><a href="http://openbox.org/oldwiki/index.php?title=Special:UserLogin&amp;returnto=Help%3AThemes"Array>Log in / create account</a></li>
+			</ul>
+		</div>
+	</div>
+	<div class="portlet" id="p-logo">
+		<a style="background-image: url(http://openbox.org/images/ob3-logo.png);" href="http://openbox.org/wiki/Main_Page"Array></a>
+	</div>
+	<script type="text/javascript"> if (window.isMSIE55) fixalpha(); </script>
+		<div class='portlet' id='p-navigation'>
+		<h5>Navigation</h5>
+		<div class='pBody'>
+			<ul>
+				<li id="n-mainpage"><a href="http://openbox.org/wiki/Main_Page"Array>Main Page</a></li>
+				<li id="n-download"><a href="http://openbox.org/wiki/Openbox:Download"Array>Download</a></li>
+				<li id="n-news"><a href="http://openbox.org/wiki/Openbox:News"Array>News</a></li>
+				<li id="n-contribute"><a href="http://openbox.org/wiki/Openbox:Contribute"Array>Contribute</a></li>
+				<li id="n-obconf"><a href="http://openbox.org/wiki/ObConf:About"Array>ObConf</a></li>
+			</ul>
+		</div>
+	</div>
+		<div class='portlet' id='p-support'>
+		<h5>support</h5>
+		<div class='pBody'>
+			<ul>
+				<li id="n-help"><a href="http://openbox.org/wiki/Help:Contents"Array>Documentation</a></li>
+				<li id="n-faq"><a href="http://openbox.org/wiki/Help:FAQ"Array>FAQ</a></li>
+				<li id="n-gettingstarted"><a href="http://openbox.org/wiki/Help:Getting_started"Array>Getting started</a></li>
+				<li id="n-installing"><a href="http://openbox.org/wiki/Help:Installing"Array>Installing guide</a></li>
+				<li id="n-bugs"><a href="http://openbox.org/wiki/Openbox:Contribute#Bug_reports"Array>Bug reports</a></li>
+			</ul>
+		</div>
+	</div>
+		<div class='portlet' id='p-community'>
+		<h5>community</h5>
+		<div class='pBody'>
+			<ul>
+				<li id="n-portal"><a href="http://openbox.org/wiki/Openbox:Community_portal"Array>Community portal</a></li>
+				<li id="n-themes"><a href="http://openbox.org/wiki/Openbox:Themes"Array>Themes</a></li>
+				<li id="n-screenshots"><a href="http://openbox.org/wiki/Openbox:Screenshots"Array>Screen shots</a></li>
+				<li id="n-pipemenus"><a href="http://openbox.org/wiki/Openbox:Pipemenus"Array>Pipe menus</a></li>
+			</ul>
+		</div>
+	</div>
+		<div class='portlet' id='p-wiki'>
+		<h5>wiki</h5>
+		<div class='pBody'>
+			<ul>
+				<li id="n-recentchanges"><a href="http://openbox.org/wiki/Special:RecentChanges"Array>Recent changes</a></li>
+				<li id="n-Request-write-access"><a href="http://openbox.org/wiki/Help:RequestWriteAccess"Array>Request write access</a></li>
+			</ul>
+		</div>
+	</div>
+		<div id="p-search" class="portlet">
+		<h5><label for="searchInput">Search</label></h5>
+		<div id="searchBody" class="pBody">
+			<form action="http://openbox.org/wiki/Special:Search" id="searchform"><div>
+				<input id="searchInput" name="search" type="text"Array value="" />
+				<input type='submit' name="go" class="searchButton" id="searchGoButton"	value="Go" />&nbsp;
+				<input type='submit' name="fulltext" class="searchButton" id="mw-searchButton" value="Search" />
+			</div></form>
+		</div>
+	</div>
+	<div class="portlet" id="p-tb">
+		<h5>Tools</h5>
+		<div class="pBody">
+			<ul>
+				<li id="t-whatlinkshere"><a href="http://openbox.org/wiki/Special:WhatLinksHere/Help:Themes"Array>What links here</a></li>
+				<li id="t-recentchangeslinked"><a href="http://openbox.org/wiki/Special:RecentChangesLinked/Help:Themes"Array>Related changes</a></li>
+<li id="t-specialpages"><a href="http://openbox.org/wiki/Special:SpecialPages"Array>Special pages</a></li>
+				<li id="t-print"><a href="http://openbox.org/oldwiki/index.php?title=Help:Themes&amp;printable=yes"Array>Printable version</a></li>				<li id="t-permalink"><a href="http://openbox.org/oldwiki/index.php?title=Help:Themes&amp;oldid=3591"Array>Permanent link</a></li>			</ul>
+		</div>
+	</div>
+
+<!--
+	<div id="p-advertisement" class="portlet">
+		<h5>books for children</h5>
+		<div class="pBody">
+			<div><a target="_BLANK" href="http://www.phoophie.com"><img src="http://openbox.org/openbox/webgfx/bannerbyeve3.gif" /></a></div>
+		</div>
+	</div>
+-->
+
+		</div><!-- end of the left (by default at least) column -->
+			<div class="visualClear"></div>
+			<div id="footer">
+				<div id="f-poweredbyico"><a href="//www.mediawiki.org/">MediaWiki</a></div>
+			<ul id="f-list">
+				<li id="lastmod"> This page was last modified on 23 April 2013, at 13:16.</li>
+				<li id="viewcount">This page has been accessed 328,435 times.</li>
+				<li id="privacy"><a href="http://openbox.org/wiki/Openbox:Privacy_policy" title="Openbox:Privacy policy">Privacy policy</a></li>
+				<li id="about"><a href="http://openbox.org/wiki/Openbox:About" title="Openbox:About">About Openbox</a></li>
+				<li id="disclaimer"><a href="http://openbox.org/wiki/Openbox:General_disclaimer" title="Openbox:General disclaimer">Disclaimers</a></li>
+			</ul>
+		</div>
+		
+	<script>if(window.mw){
+mw.loader.load(["mediawiki.user","mediawiki.page.ready"], null, true);
+}</script>
+</div>
+
+
+
+<style>
+/*
+** MediaWiki 'monobook' style sheet for CSS2-capable browsers.
+** Copyright Gabriel Wicke - http://wikidev.net/
+** License: GPL (http://www.gnu.org/copyleft/gpl.html)
+**
+** Loosely based on http://www.positioniseverything.net/ordered-floats.html by Big John
+** and the Plone 2.0 styles, see http://plone.org/ (Alexander Limi,Joe Geldart & Tom Croucher,
+** Michael Zeltner and Geir Bækholt)
+** All you guys rock :)
+*/
+
+/**
+ * Stylesheet for screen/projection.  All rules not marked media-specific are
+ * shared with handheld.css and should be updated in tandem.  The rules can't
+ * be in the same file because old browsers like IE5 won't obey @media rules.
+ *
+ * Rules that are screen/projection-specific are marked with commented-out
+ * @media rules and indentation.
+ */
+
+/* @media screen, projection { */
+	#column-content {
+		width: 100%;
+		float: right;
+		margin: 0 0 .6em -13.2em;
+		padding: 0;
+	}
+	#content {
+		margin: 2.8em 0 0 13.2em;
+		padding: 0 1em 1.5em 1em;
+		position: relative;
+		z-index: 2;
+	}
+	#column-one {
+		padding-top: 95px;
+	}
+/* } */
+#content {
+	background: white;
+	color: black;
+	border: 1px solid #aaa;
+	border-right: none;
+	line-height: 1.5em;
+}
+/* the left column width is specified in class .portlet */
+
+/* Font size:
+** We take advantage of keyword scaling- browsers won't go below 9px
+** More at http://www.w3.org/2003/07/30-font-size
+** http://style.cleverchimp.com/font_size_intervals/altintervals.html
+*/
+
+body {
+	font: x-small sans-serif;
+	background: #ddd;
+	color: black;
+	margin: 0;
+	padding: 0;
+}
+
+/* scale back up to a sane default */
+#globalWrapper {
+	font-size: 127%;
+	width: 100%;
+	margin: 0;
+	padding: 0;
+}
+.visualClear {
+	clear: both;
+}
+
+/* general styles */
+
+table {
+	font-size: 100%;
+	color: black;
+	/* we don't want the bottom borders of <h2>s to be visible through
+	   floated tables */
+	background-color: white;
+}
+a {
+	text-decoration: none;
+	color: #002bb8;
+	background: none;
+}
+a:visited {
+	color: #5a3696;
+}
+a:active {
+	color: #faa700;
+}
+a:hover {
+	text-decoration: underline;
+}
+a.stub {
+	color: #772233;
+}
+a.new, #p-personal a.new {
+	color: #ba0000;
+}
+a.new:visited, #p-personal a.new:visited {
+	color: #a55858;
+}
+
+img {
+	border: none;
+	vertical-align: middle;
+}
+/* @media screen, projection { */
+	p {
+		margin: .4em 0 .5em 0;
+		line-height: 1.5em;
+	}
+/* } */
+p img {
+	margin: 0;
+}
+
+hr {
+	height: 1px;
+	color: #aaa;
+	background-color: #aaa;
+	border: 0;
+	margin: .2em 0 .2em 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	color: black;
+	background: none;
+	font-weight: normal;
+	margin: 0;
+	padding-top: .5em;
+	padding-bottom: .17em;
+	border-bottom: 1px solid #aaa;
+}
+h1 { font-size: 188%; }
+h1 .editsection { font-size: 53%; }
+h2 { font-size: 150%; }
+h2 .editsection { font-size: 67%; }
+h3, h4, h5, h6 {
+	border-bottom: none;
+	font-weight: bold;
+}
+h3 { font-size: 132%; }
+h3 .editsection { font-size: 76%; font-weight: normal; }
+h4 { font-size: 116%; }
+h4 .editsection { font-size: 86%; font-weight: normal; }
+h5 { font-size: 100%; }
+h5 .editsection { font-weight: normal; }
+h6 { font-size: 80%;  }
+h6 .editsection { font-size: 125%; font-weight: normal; }
+
+.editsection {
+	float: right;
+	margin-left: 5px;
+}
+
+ul {
+	line-height: 1.5em;
+	list-style-type: square;
+	margin: .3em 0 0 1.5em;
+	padding: 0;
+}
+ol {
+	line-height: 1.5em;
+	margin: .3em 0 0 3.2em;
+	padding: 0;
+	list-style-image: none;
+}
+li {
+	margin-bottom: .1em;
+}
+dt {
+	font-weight: bold;
+	margin-bottom: .1em;
+}
+dl {
+	margin-top: .2em;
+	margin-bottom: .5em;
+}
+dd {
+	line-height: 1.5em;
+	margin-left: 2em;
+	margin-bottom: .1em;
+}
+
+fieldset {
+	border: 1px solid #2f6fab;
+	margin: 1em 0 1em 0;
+	padding: 0 1em 1em;
+	line-height: 1.5em;
+}
+legend {
+	padding: .5em;
+	font-size: 95%;
+}
+form {
+	border: none;
+	margin: 0;
+}
+
+textarea {
+	width: 100%;
+	padding: .1em;
+}
+
+input.historysubmit {
+	padding: 0 .3em .3em .3em !important;
+	font-size: 94%;
+	cursor: pointer;
+	height: 1.7em !important;
+	margin-left: 1.6em;
+}
+select {
+	vertical-align: top;
+}
+abbr, acronym, .explain {
+	border-bottom: 1px dotted black;
+	color: black;
+	background: none;
+	cursor: help;
+}
+q {
+	font-family: Times, "Times New Roman", serif;
+	font-style: italic;
+}
+/* disabled for now
+blockquote {
+	font-family: Times, "Times New Roman", serif;
+	font-style: italic;
+}*/
+code {
+	background-color: #f9f9f9;
+}
+pre {
+	padding: 1em;
+	border: 1px dashed #2f6fab;
+	color: black;
+	background-color: #f9f9f9;
+	line-height: 1.1em;
+}
+
+/*
+** the main content area
+*/
+
+/* @media screen, projection { */
+	#siteSub {
+		display: none;
+	}
+	#jump-to-nav {
+		display: none;
+	}
+/* } */
+
+#contentSub, #contentSub2 {
+	font-size: 84%;
+	line-height: 1.2em;
+	margin: 0 0 1.4em 1em;
+	color: #7d7d7d;
+	width: auto;
+}
+span.subpages {
+	display: block;
+}
+
+/* Some space under the headers in the content area */
+#bodyContent h1, #bodyContent h2 {
+	margin-bottom: .6em;
+}
+#bodyContent h3, #bodyContent h4, #bodyContent h5 {
+	margin-bottom: .3em;
+}
+.firstHeading {
+	margin-bottom: .1em;
+}
+
+/* user notification thing */
+.usermessage {
+	background-color: #ffce7b;
+	border: 1px solid #ffa500;
+	color: black;
+	font-weight: bold;
+	margin: 2em 0 1em;
+	padding: .5em 1em;
+	vertical-align: middle;
+}
+#siteNotice {
+	text-align: center;
+	font-size: 95%;
+	padding: 0 .9em;
+}
+#siteNotice p {
+	margin: 0;
+	padding: 0;
+}
+.error {
+	color: red;
+	font-size: larger;
+}
+.errorbox, .successbox {
+	font-size: larger;
+	border: 2px solid;
+	padding: .5em 1em;
+	float: left;
+	margin-bottom: 2em;
+	color: #000;
+}
+.errorbox {
+	border-color: red;
+	background-color: #fff2f2;
+}
+.successbox {
+	border-color: green;
+	background-color: #dfd;
+}
+.errorbox h2, .successbox h2 {
+	font-size: 1em;
+	font-weight: bold;
+	display: inline;
+	margin: 0 .5em 0 0;
+	border: none;
+}
+
+#catlinks {
+	border: 1px solid #aaa;
+	background-color: #f9f9f9;
+	padding: 5px;
+	margin-top: 1em;
+	clear: both;
+}
+/* currently unused, intended to be used by a metadata box
+in the bottom-right corner of the content area */
+.documentDescription {
+	/* The summary text describing the document */
+	font-weight: bold;
+	display: block;
+	margin: 1em 0;
+	line-height: 1.5em;
+}
+.documentByLine {
+	text-align: right;
+	font-size: 90%;
+	clear: both;
+	font-weight: normal;
+	color: #76797c;
+}
+
+/* emulate center */
+.center {
+	width: 100%;
+	text-align: center;
+}
+*.center * {
+	margin-left: auto;
+	margin-right: auto;
+}
+/* small for tables and similar */
+.small, .small * {
+	font-size: 94%;
+}
+table.small {
+	font-size: 100%;
+}
+
+/*
+** content styles
+*/
+
+#toc,
+.toc,
+.mw-warning {
+	border: 1px solid #aaa;
+	background-color: #f9f9f9;
+	padding: 5px;
+	font-size: 95%;
+}
+#toc h2,
+.toc h2 {
+	display: inline;
+	border: none;
+	padding: 0;
+	font-size: 100%;
+	font-weight: bold;
+}
+#toc #toctitle,
+.toc #toctitle,
+#toc .toctitle,
+.toc .toctitle {
+	text-align: center;
+}
+#toc ul,
+.toc ul {
+	list-style-type: none;
+	list-style-image: none;
+	margin-left: 0;
+	padding-left: 0;
+	text-align: left;
+}
+#toc ul ul,
+.toc ul ul {
+	margin: 0 0 0 2em;
+}
+#toc .toctoggle,
+.toc .toctoggle {
+	font-size: 94%;
+}
+
+.mw-warning {
+	margin-left: 50px;
+	margin-right: 50px;
+	text-align: center;
+}
+
+/* images */
+div.floatright, table.floatright {
+	clear: right;
+	float: right;
+	position: relative;
+	margin: 0 0 .5em .5em;
+	border: 0;
+/*
+	border: .5em solid white;
+	border-width: .5em 0 .8em 1.4em;
+*/
+}
+div.floatright p { font-style: italic; }
+div.floatleft, table.floatleft {
+	float: left;
+	clear: left;
+	position: relative;
+	margin: 0 .5em .5em 0;
+	border: 0;
+/*
+	margin: .3em .5em .5em 0;
+	border: .5em solid white;
+	border-width: .5em 1.4em .8em 0;
+*/
+}
+div.floatleft p { font-style: italic; }
+/* thumbnails */
+div.thumb {
+	margin-bottom: .5em;
+	border-style: solid;
+	border-color: white;
+	width: auto;
+}
+div.thumbinner {
+	border: 1px solid #ccc;
+	padding: 3px !important;
+	background-color: #f9f9f9;
+	font-size: 94%;
+	text-align: center;
+	overflow: hidden;
+}
+html .thumbimage {
+	border: 1px solid #ccc;
+}
+html .thumbcaption {
+	border: none;
+	text-align: left;
+	line-height: 1.4em;
+	padding: 3px !important;
+	font-size: 94%;
+}
+div.magnify {
+	float: right;
+	border: none !important;
+	background: none !important;
+}
+div.magnify a, div.magnify img {
+	display: block;
+	border: none !important;
+	background: none !important;
+}
+div.tright {
+	clear: right;
+	float: right;
+	border-width: .5em 0 .8em 1.4em;
+}
+div.tleft {
+	float: left;
+	clear: left;
+	margin-right: .5em;
+	border-width: .5em 1.4em .8em 0;
+}
+
+.hiddenStructure {
+	display: none;
+	speak: none;
+}
+img.tex {
+	vertical-align: middle;
+}
+span.texhtml {
+	font-family: serif;
+}
+
+/* Have a checkered background on images on the description pages and in galleries
+   to make transparency visible
+
+#file img, .gallerybox .thumb img {
+	background: url(Checker-16x16.png) repeat;
+}
+*/
+
+/*
+** classes for special content elements like town boxes
+** intended to be referenced directly from the wiki src
+*/
+
+/*
+** User styles
+*/
+/* table standards */
+table.rimage {
+	float: right;
+	position: relative;
+	margin-left: 1em;
+	margin-bottom: 1em;
+	text-align: center;
+}
+.toccolours {
+	border: 1px solid #aaa;
+	background-color: #f9f9f9;
+	padding: 5px;
+	font-size: 95%;
+}
+div.townBox {
+	position: relative;
+	float: right;
+	background: white;
+	margin-left: 1em;
+	border: 1px solid gray;
+	padding: .3em;
+	width: 200px;
+	overflow: hidden;
+	clear: right;
+}
+div.townBox dl {
+	padding: 0;
+	margin: 0 0 .3em;
+	font-size: 96%;
+}
+div.townBox dl dt {
+	background: none;
+	margin: .4em 0 0;
+}
+div.townBox dl dd {
+	margin: .1em 0 0 1.1em;
+	background-color: #f3f3f3;
+}
+
+/*
+** edit views etc
+*/
+.special li {
+	line-height: 1.4em;
+	margin: 0;
+	padding: 0;
+}
+
+/* Page history styling */
+/* the auto-generated edit comments */
+.autocomment {
+	color: gray;
+}
+#pagehistory span.user {
+	margin-left: 1.4em;
+	margin-right: .4em;
+}
+#pagehistory span.minor {
+	font-weight: bold;
+}
+#pagehistory li {
+	border: 1px solid white;
+}
+#pagehistory li.selected {
+	background-color: #f9f9f9;
+	border: 1px dashed #aaa;
+}
+
+/*
+** Diff rendering
+*/
+table.diff, td.diff-otitle, td.diff-ntitle {
+	background-color: white;
+}
+td.diff-addedline {
+	background: #cfc;
+	font-size: smaller;
+}
+td.diff-deletedline {
+	background: #ffa;
+	font-size: smaller;
+}
+td.diff-context {
+	background: #eee;
+	font-size: smaller;
+}
+.diffchange {
+	color: red;
+	font-weight: bold;
+	text-decoration: none;
+}
+
+/*
+** keep the whitespace in front of the ^=, hides rule from konqueror
+** this is css3, the validator doesn't like it when validating as css2
+*/
+#bodyContent a.external,
+#bodyContent a[href ^="gopher://"] {
+	background: url(external.png) center right no-repeat;
+	padding-right: 13px;
+}
+#bodyContent a[href ^="https://"],
+.link-https {
+	background: url(lock_icon.gif) center right no-repeat;
+	padding-right: 16px;
+}
+#bodyContent a[href ^="mailto:"],
+.link-mailto {
+	background: url(mail_icon.gif) center right no-repeat;
+	padding-right: 18px;
+}
+#bodyContent a[href ^="news://"] {
+	background: url(news_icon.png) center right no-repeat;
+	padding-right: 18px;
+}
+#bodyContent a[href ^="ftp://"],
+.link-ftp {
+	background: url(file_icon.gif) center right no-repeat;
+	padding-right: 18px;
+}
+#bodyContent a[href ^="irc://"],
+.link-irc {
+	background: url(discussionitem_icon.gif) center right no-repeat;
+	padding-right: 18px;
+}
+#bodyContent a.external[href $=".ogg"], #bodyContent a.external[href $=".OGG"],
+#bodyContent a.external[href $=".mid"], #bodyContent a.external[href $=".MID"],
+#bodyContent a.external[href $=".midi"], #bodyContent a.external[href $=".MIDI"],
+#bodyContent a.external[href $=".mp3"], #bodyContent a.external[href $=".MP3"],
+#bodyContent a.external[href $=".wav"], #bodyContent a.external[href $=".WAV"],
+#bodyContent a.external[href $=".wma"], #bodyContent a.external[href $=".WMA"],
+.link-audio {
+	background: url("audio.png") center right no-repeat;
+	padding-right: 13px;
+}
+#bodyContent a.external[href $=".ogm"], #bodyContent a.external[href $=".OGM"],
+#bodyContent a.external[href $=".avi"], #bodyContent a.external[href $=".AVI"],
+#bodyContent a.external[href $=".mpeg"], #bodyContent a.external[href $=".MPEG"],
+#bodyContent a.external[href $=".mpg"], #bodyContent a.external[href $=".MPG"],
+.link-video {
+	background: url("video.png") center right no-repeat;
+	padding-right: 13px;
+}
+#bodyContent a.external[href $=".pdf"], #bodyContent a.external[href $=".PDF"],
+#bodyContent a.external[href *=".pdf#"], #bodyContent a.external[href *=".PDF#"],
+#bodyContent a.external[href *=".pdf?"], #bodyContent a.external[href *=".PDF?"],
+.link-document {
+	background: url("document.png") center right no-repeat;
+	padding-right: 12px;
+}
+
+/* disable interwiki styling */
+#bodyContent a.extiw,
+#bodyContent a.extiw:active {
+	color: #36b;
+	background: none;
+	padding: 0;
+}
+#bodyContent a.external {
+	color: #36b;
+}
+/* this can be used in the content area to switch off
+special external link styling */
+#bodyContent .plainlinks a {
+	background: none !important;
+	padding: 0 !important;
+}
+/*
+** Structural Elements
+*/
+
+/*
+** general portlet styles (elements in the quickbar)
+*/
+.portlet {
+	border: none;
+	margin: 0 0 .5em;
+	padding: 0;
+	float: none;
+	width: 12.8em;
+	overflow: hidden;
+}
+.portlet h4 {
+	font-size: 95%;
+	font-weight: normal;
+	white-space: nowrap;
+}
+.portlet h5 {
+	background: transparent;
+	padding: 0 1em 0 .5em;
+	display: inline;
+	height: 1em;
+	text-transform: lowercase;
+	font-size: 91%;
+	font-weight: normal;
+	white-space: nowrap;
+}
+.portlet h6 {
+	background: #ffae2e;
+	border: 1px solid #2f6fab;
+	border-style: solid solid none solid;
+	padding: 0 1em 0 1em;
+	text-transform: lowercase;
+	display: block;
+	font-size: 1em;
+	height: 1.2em;
+	font-weight: normal;
+	white-space: nowrap;
+}
+.pBody {
+	font-size: 95%;
+	background-color: white;
+	color: black;
+	border-collapse: collapse;
+	border: 1px solid #aaa;
+	padding: 0 .8em .3em .5em;
+}
+.portlet h1,
+.portlet h2,
+.portlet h3,
+.portlet h4 {
+	margin: 0;
+	padding: 0;
+}
+.portlet ul {
+	line-height: 1.5em;
+	list-style-type: square;
+	font-size: 95%;
+}
+.portlet li {
+	padding: 0;
+	margin: 0;
+}
+
+/*
+** Logo properties
+*/
+
+/* @media screen, projection { */
+	#p-logo {
+		top: 0;
+		left: 0;
+		position: absolute; /*needed to use z-index */
+		z-index: 3;
+		height: 95px;
+		width: 12em;
+		overflow: visible;
+	}
+	#p-logo h5 {
+		display: none;
+	}
+	#p-logo a,
+	#p-logo a:hover {
+		display: block;
+		height: 95px;
+		width: 12.2em;
+		background-repeat: no-repeat;
+		background-position: 35% 50% !important;
+		text-decoration: none;
+	}
+/* } */
+
+/*
+** the navigation portlet
+*/
+
+/* @media screen, projection { */
+	#p-navigation, #p-support, #p-community, #p-wiki, #p-tb {
+		position: relative;
+		z-index: 3;
+	}
+	#p-navigation a, #p-support a, #p-community a, #p-wiki a, #p-tb a {
+		display: block;
+	}
+	#p-navigation li.active a, #p-navigation li.active a:hover,
+		#p-support li.active a, #p-support li.active a:hover,
+		#p-community li.active a, #p-community li.active a:hover,
+		#p-wiki li.active a, #p-wiki li.active a:hover
+		#p-tb li.active a, #p-tb li.active a:hover
+	{
+		display: inline;
+	}
+/* } */
+
+#p-navigation .pBody, #p-support .pBody, #p-community .pBody, #p-wiki .pBody,
+	#p-tb .pBody
+{
+	padding-right: 0;
+}
+
+#p-navigation li.active a, #p-navigation li.active a:hover,
+	#p-support li.active a, #p-support li.active a:hover,
+	#p-community li.active a, #p-community li.active a:hover
+	#p-wiki li.active a, #p-wiki li.active a:hover
+	#p-tb li.active a, #p-tb li.active a:hover
+{
+	text-decoration: none;
+	font-weight: bold;
+}
+
+/*
+** the advertisement portlet
+*/
+
+/* @media screen, projection { */
+	#p-advertisement {
+		position: relative;
+		z-index: 3;
+	}
+	#p-advertisement .pBody>div {
+		margin: 3px;
+	}
+	#p-advertisement a {
+		
+	}
+	#p-advertisement li.active a, #p-advertisement li.active a:hover {
+		display: inline;
+	}
+/* } */
+
+#p-advertisement .pBody {
+	padding-right: 0;
+}
+
+#p-advertisement li.active a, #p-advertisement li.active a:hover {
+	text-decoration: none;
+	font-weight: bold;
+}
+
+
+/*
+** Search portlet
+*/
+/* @media screen, projection { */
+	#p-search {
+		position: relative;
+		z-index: 3;
+	}
+/* } */
+input.searchButton {
+	margin-top: 1px;
+	font-size: 95%;
+}
+#searchGoButton {
+	padding-left: .5em;
+	padding-right: .5em;
+	font-weight: bold;
+}
+#searchInput {
+	width: 10.9em;
+	margin: 0;
+	font-size: 95%;
+}
+#p-search .pBody {
+	padding: .5em .4em .4em .4em;
+	text-align: center;
+}
+
+/*
+** the personal toolbar
+*/
+/* @media screen, projection { */
+	#p-personal {
+		position: absolute;
+		left: 0;
+		top: 0;
+		z-index: 0;
+	}
+	#p-personal {
+		width: 100%;
+		white-space: nowrap;
+		padding: 0;
+		margin: 0;
+		border: none;
+		background: none;
+		overflow: visible;
+		line-height: 1.2em;
+	}
+	#p-personal h5 {
+		display: none;
+	}
+	#p-personal .portlet,
+	#p-personal .pBody {
+		z-index: 0;
+		padding: 0;
+		margin: 0;
+		border: none;
+		overflow: visible;
+		background: none;
+	}
+/* this is the ul contained in the portlet */
+	#p-personal ul {
+		border: none;
+		line-height: 1.4em;
+		color: #2f6fab;
+		padding: 0 2em 0 3em;
+		margin: 0;
+		text-align: right;
+		list-style: none;
+		z-index: 0;
+		background: none;
+		cursor: default;
+	}
+	#p-personal li {
+		z-index: 0;
+		border: none;
+		padding: 0;
+		display: inline;
+		color: #2f6fab;
+		margin-left: 1em;
+		line-height: 1.2em;
+		background: none;
+	}
+	#p-personal li a {
+		text-decoration: none;
+		color: #005896;
+		padding-bottom: .2em;
+		background: none;
+	}
+	#p-personal li a:hover {
+		background-color: none;
+		padding-bottom: .2em;
+		text-decoration: none;
+	}
+	#p-personal li.active a:hover {
+		background-color: transparent;
+	}
+	/* the icon in front of the user name, single quotes
+	in bg url to hide it from iemac */
+	li#pt-userpage,
+	li#pt-anonuserpage,
+	li#pt-login {
+		background: url(user.gif) top left no-repeat;
+		padding-left: 20px;
+		text-transform: none;
+	}
+/* } */
+#p-personal ul {
+	text-transform: lowercase;
+}
+#p-personal li.active {
+	font-weight: bold;
+}
+/*
+** the page-related actions- page/talk, edit etc
+*/
+/* @media screen, projection { */
+	#p-cactions {
+		position: absolute;
+		top: 1.3em;
+		left: 12.5em;
+		margin: 0;
+		white-space: nowrap;
+		width: 76%;
+		line-height: 1.1em;
+		overflow: visible;
+		background: none;
+		border-collapse: collapse;
+		padding-left: 1em;
+		list-style: none;
+		font-size: 95%;
+	}
+	#p-cactions ul {
+		list-style: none;
+	}
+	#p-cactions li {
+		display: inline;
+		border: 1px solid #aaa;
+		border-bottom: none;
+		padding: 0 0 .1em 0;
+		margin: 0 .3em 0 0;
+		overflow: visible;
+		background: white;
+	}
+	#p-cactions li.selected {
+		border-color: #fabd23;
+		padding: 0 0 .2em 0;
+		font-weight: bold;
+	}
+	#p-cactions li a {
+		background-color: #fbfbfb;
+		color: #002bb8;
+		border: none;
+		padding: 0 .8em .3em;
+		position: relative;
+		z-index: 0;
+		margin: 0;
+		text-decoration: none;
+	}
+	#p-cactions li.selected a {
+		z-index: 3;
+		padding: 0 1em .2em!important;
+		background-color: white;
+	}
+	#p-cactions .new a {
+		color: #ba0000;
+	}
+	#p-cactions li a:hover {
+		z-index: 3;
+		text-decoration: none;
+		background-color: white;
+	}
+	#p-cactions h5 {
+		display: none;
+	}
+	#p-cactions li.istalk {
+		margin-right: 0;
+	}
+	#p-cactions li.istalk a {
+		padding-right: .5em;
+	}
+	#p-cactions #ca-addsection a {
+		padding-left: .4em;
+		padding-right: .4em;
+	}
+	/* offsets to distinguish the tab groups */
+	li#ca-talk {
+		margin-right: 1.6em;
+	}
+	li#ca-watch, li#ca-unwatch, li#ca-varlang-0, li#ca-print {
+		margin-left: 1.6em;
+	}
+	#p-cactions .pBody {
+		font-size: 1em;
+		background-color: transparent;
+		color: inherit;
+		border-collapse: inherit;
+		border: 0;
+		padding: 0;
+	}
+/* } */
+#p-cactions .hiddenStructure {
+	display: none;
+}
+#p-cactions li a {
+	text-transform: lowercase;
+}
+
+/*
+** the remaining portlets
+*/
+/* @media screen, projection { */
+	#p-tbx,
+	#p-lang {
+		position: relative;
+		z-index: 3;
+	}
+/* } */
+
+/* TODO: #t-iscite is only used by the Cite extension, come up with some
+ * system which allows extensions to add to this file on the fly
+ */
+#t-ispermalink, #t-iscite {
+	color: #999;
+}
+/*
+** footer
+*/
+#footer {
+	background-color: white;
+	border-top: 1px solid #fabd23;
+	border-bottom: 1px solid #fabd23;
+	margin: .6em 0 1em 0;
+	padding: .4em 0 1.2em 0;
+	text-align: center;
+	font-size: 90%;
+}
+#footer li {
+	display: inline;
+	margin: 0 1.3em;
+}
+#f-poweredbyico, #f-copyrightico {
+	margin: 0 8px;
+	position: relative;
+	top: -2px; /* Bump it up just a tad */
+}
+#f-poweredbyico {
+	float: right;
+	height: 1%;
+}
+#f-copyrightico {
+	float: left;
+	height: 1%;
+}
+
+/* js pref toc */
+#preftoc {
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	clear: both;
+}
+#preftoc li {
+	background-color: #f0f0f0;
+	color: #000;
+}
+/* @media screen, projection { */
+	#preftoc li {
+		margin: 1px -2px 1px 2px;
+		float: left;
+		padding: 2px 0 3px 0;
+		border: 1px solid #fff;
+		border-right-color: #716f64;
+		border-bottom: 0;
+		position: relative;
+		white-space: nowrap;
+		list-style-type: none;
+		list-style-image: none;
+		z-index: 3;
+	}
+/* } */
+#preftoc li.selected {
+	font-weight: bold;
+	background-color: #f9f9f9;
+	border: 1px solid #aaa;
+	border-bottom: none;
+	cursor: default;
+	top: 1px;
+	padding-top: 2px;
+	margin-right: -3px;
+}
+#preftoc > li.selected {
+	top: 2px;
+}
+#preftoc a,
+#preftoc a:active {
+	display: block;
+	color: #000;
+	padding: 0 .7em;
+	position: relative;
+	text-decoration: none;
+}
+#preftoc li.selected a {
+	cursor: default;
+	text-decoration: none;
+}
+#prefcontrol {
+	padding-top: 2em;
+	clear: both;
+}
+#preferences {
+	margin: 0;
+	border: 1px solid #aaa;
+	clear: both;
+	padding: 1.5em;
+	background-color: #F9F9F9;
+}
+.prefsection {
+	border: none;
+	padding: 0;
+	margin: 0;
+}
+.prefsection fieldset {
+	border: 1px solid #aaa;
+	float: left;
+	margin-right: 2em;
+}
+.prefsection legend {
+	font-weight: bold;   
+}
+.prefsection table, .prefsection legend {
+	background-color: #F9F9F9;
+}
+/* @media screen, projection { */
+	.mainLegend {
+		display: none;
+	}
+/* } */
+div.prefsectiontip {
+	font-size: 95%;
+	margin-top: 0;
+	background-color: #FFC1C1;
+	padding: .2em .7em;
+	clear: both;
+}
+.btnSavePrefs {
+	font-weight: bold;
+	padding-left: .3em;
+	padding-right: .3em;
+}
+
+.preferences-login {
+	clear: both;
+	margin-bottom: 1.5em;
+}
+
+.prefcache {
+	font-size: 90%;
+	margin-top: 2em;
+}
+
+div#userloginForm form,
+div#userlogin form#userlogin2 {
+	margin: 0 3em 1em 0;
+	border: 1px solid #aaa;
+	clear: both;
+	padding: 1.5em 2em;
+	background-color: #f9f9f9;
+	float: left;
+}
+
+div#userloginForm table,
+div#userlogin form#userlogin2 table {
+	background-color: #f9f9f9;
+}
+
+div#userloginForm h2,
+div#userlogin form#userlogin2 h2 {
+	padding-top: 0;
+}
+
+div#userlogin .captcha {
+	border: 1px solid #bbb;
+	padding: 1.5em 2em;
+	width: 400px;
+	background-color: white;
+}
+
+
+#userloginprompt, #languagelinks {
+	font-size: 85%;
+}
+
+#login-sectiontip {
+	font-size: 85%;
+	line-height: 1.2;
+	padding-top: 2em;
+}
+
+#userlogin .loginText, #userlogin .loginPassword {
+	width: 12em;
+}
+
+#userloginlink a, #wpLoginattempt, #wpCreateaccount {
+	font-weight: bold;
+}
+
+/* @media screen, projection { */
+	/*
+	** IE/Mac fixes, hope to find a validating way to move this
+	** to a separate stylesheet. This would work but doesn't validate:
+	** @import("IEMacFixes.css");
+	*/
+	/* tabs: border on the a, not the div */
+	* > html #p-cactions li { border: none; }
+	* > html #p-cactions li a {
+		border: 1px solid #aaa;
+		border-bottom: none;
+	}
+	* > html #p-cactions li.selected a { border-color: #fabd23; }
+	/* footer icons need a fixed width */
+	* > html #f-poweredbyico,
+	* > html #f-copyrightico { width: 88px; }
+	* > html #bodyContent,
+	* > html #bodyContent pre {
+		overflow-x: auto;
+		width: 100%;
+		padding-bottom: 25px;
+	}
+/* } */
+
+/* more IE fixes */
+/* float/negative margin brokenness */
+* html #footer {margin-top: 0;}
+* html #column-content {
+	display: inline;
+	margin-bottom: 0;
+}
+* html div.editsection { font-size: smaller; }
+#pagehistory li.selected { position: relative; }
+
+/* Mac IE 5.0 fix; floated content turns invisible */
+* > html #column-content {
+	float: none;
+}
+* > html #column-one {
+	position: absolute;
+	left: 0;
+	top: 0;
+}
+* > html #footer {
+	margin-left: 13.2em;
+}
+.redirectText {
+	font-size: 150%;
+	margin: 5px;
+}
+
+.printfooter {
+	display: none;
+}
+
+.not-patrolled {
+	background-color: #ffa;
+}
+div.patrollink {
+	font-size: 75%;
+	text-align: right;
+}
+span.newpage, span.minor, span.searchmatch, span.bot {
+	font-weight: bold;
+}
+span.unpatrolled {
+	font-weight: bold;
+	color: red;
+}
+
+span.searchmatch {
+	color: red;
+}
+.sharedUploadNotice {
+	font-style: italic;
+}
+
+span.updatedmarker {
+	color: black;
+	background-color: #0f0;
+}
+
+table.gallery {
+	border: 1px solid #ccc;
+	margin: 2px;
+	padding: 2px;
+	background-color: white;
+}
+
+table.gallery tr {
+	vertical-align: top;
+}
+
+table.gallery td {
+	vertical-align: top;
+	background-color: #f9f9f9;
+	border: solid 2px white;
+}
+/* Keep this temporarily so that cached pages will display right */
+table.gallery td.galleryheader {
+    text-align: center;
+	font-weight: bold;
+}
+table.gallery caption {
+	font-weight: bold;
+}
+
+div.gallerybox {
+	margin: 2px;
+}
+
+div.gallerybox div.thumb {
+	text-align: center;
+	border: 1px solid #ccc;
+	margin: 2px;
+}
+
+div.gallerytext {
+	font-size: 94%;
+	padding: 2px 4px;
+}
+
+span.comment {
+	font-style: italic;
+}
+
+span.changedby {
+	font-size: 95%;
+}
+
+.previewnote {
+	text-indent: 3em;
+	color: #c00;
+	border-bottom: 1px solid #aaa;
+	padding-bottom: 1em;
+	margin-bottom: 1em;
+}
+
+.previewnote p {
+	margin: 0;
+	padding: 0;
+}
+
+.editExternally {
+	border: 1px solid gray;
+	background-color: #ffffff;
+	padding: 3px;
+	margin-top: 0.5em;
+	float: left;
+	font-size: small;
+	text-align: center;
+}
+.editExternallyHelp {
+	font-style: italic;
+	color: gray;
+}
+
+li span.deleted, span.history-deleted {
+	text-decoration: line-through;
+	color: #888;
+	font-style: italic;
+}
+
+.toggle {
+	margin-left: 2em;
+	text-indent: -2em;
+}
+
+/* Classes for EXIF data display */
+table.mw_metadata {
+	font-size: 0.8em;
+	margin-left: 0.5em;
+	margin-bottom: 0.5em;
+	width: 300px;
+}
+
+table.mw_metadata caption {
+	font-weight: bold;
+}
+
+table.mw_metadata th {
+	font-weight: normal;
+}
+
+table.mw_metadata td {
+	padding: 0.1em;
+}
+
+table.mw_metadata {
+	border: none;
+	border-collapse: collapse;
+}
+
+table.mw_metadata td, table.mw_metadata th {
+	text-align: center;
+	border: 1px solid #aaaaaa;
+	padding-left: 0.1em;
+	padding-right: 0.1em;
+}
+
+table.mw_metadata th {
+	background-color: #f9f9f9;
+}
+
+table.mw_metadata td {
+	background-color: #fcfcfc;
+}
+
+table.collapsed tr.collapsable {
+	display: none;
+}
+
+
+/* filetoc */
+ul#filetoc {
+	text-align: center;
+	border: 1px solid #aaaaaa;
+	background-color: #f9f9f9;
+	padding: 5px;
+	font-size: 95%;
+	margin-bottom: 0.5em;
+	margin-left: 0;
+	margin-right: 0;
+}
+
+#filetoc li {
+	display: inline;
+	list-style-type: none;
+	padding-right: 2em;
+}
+
+input#wpSummary {
+	width: 80%;
+}
+
+/* @bug 1714 */
+input#wpSave, input#wpDiff {
+	margin-right: 0.33em;
+}
+
+#editform .editOptions {
+	display: inline;
+}
+
+#wpSave {
+	font-weight: bold;
+}
+
+/* Classes for article validation */
+
+table.revisionform_default {
+	border: 1px solid #000000;
+}
+
+table.revisionform_focus {
+	border: 1px solid #000000;
+	background-color:#00BBFF;
+}
+
+tr.revision_tr_default {
+	background-color:#EEEEEE;
+}
+
+tr.revision_tr_first {
+	background-color:#DDDDDD;
+}
+
+p.revision_saved {
+	color: green;
+	font-weight:bold;
+}
+
+#mw_trackbacks {
+	border: solid 1px #bbbbff;
+	background-color: #eeeeff;
+	padding: 0.2em;
+}
+
+
+/* Allmessages table */
+
+#allmessagestable th {
+	background-color: #b2b2ff;
+}
+
+#allmessagestable tr.orig {
+	background-color: #ffe2e2;
+}
+
+#allmessagestable tr.new {
+	background-color: #e2ffe2;
+}
+
+#allmessagestable tr.def {
+	background-color: #f0f0ff;
+}
+
+
+/* noarticletext */
+div.noarticletext {
+	border: 1px solid #ccc;
+	background: #fff;
+	padding: .2em 1em;
+	color: #000;
+}
+
+div#searchTargetContainer {
+	left:       10px;
+	top:        10px;
+	width:      90%;
+	background: white;
+}
+
+div#searchTarget {
+	padding:    3px;
+	margin:     5px;
+	background: #F0F0F0;
+	border:     solid 1px blue;
+}
+
+div#searchTarget ul li {
+	list-style: none;
+}
+
+div#searchTarget ul li:before {
+	color: orange;
+	content: "\00BB \0020";
+}
+
+div.multipageimagenavbox {
+   border: solid 1px silver;
+   padding: 4px;
+   margin: 1em;
+   -moz-border-radius: 6px;
+   background: #f0f0f0;
+}
+
+div.multipageimagenavbox div.thumb {
+   border: none;
+   margin-left: 2em;
+   margin-right: 2em;
+}
+
+div.multipageimagenavbox hr {
+   margin: 6px;
+}
+
+table.multipageimage td {
+   text-align: center;
+}
+
+/** Special:Version */
+
+table#sv-ext, table#sv-hooks {
+	margin: 1em;
+	padding:0em;
+}
+
+#sv-ext td, #sv-hooks td,
+#sv-ext th, #sv-hooks th {
+	border: 1px solid #A0A0A0;
+	padding: 0 0.15em 0 0.15em;
+}
+#sv-ext th, #sv-hooks th {
+	background-color: #F0F0F0;
+	color: black;
+	padding: 0 0.15em 0 0.15em;
+}
+tr.sv-space{
+	height: 0.8em;
+	border:none;
+}
+tr.sv-space td { display: none; }
+
+/*
+  Table pager (e.g. Special:Imagelist)
+  - remove underlines from the navigation link
+  - collapse borders
+  - set the borders to outsets (similar to Special:Allmessages)
+  - remove line wrapping for all td and th, set background color
+  - restore line wrapping for the last two table cells (description and size)
+*/
+.TablePager_nav a { text-decoration: none; }
+.TablePager { border-collapse: collapse; }
+.TablePager, .TablePager td, .TablePager th { 
+	border: 1px solid #aaaaaa;
+	padding: 0 0.15em 0 0.15em;
+}
+.TablePager th { background-color: #eeeeff }
+.TablePager td { background-color: #ffffff }
+.TablePager tr:hover td { background-color: #eeeeff }
+
+.imagelist td, .imagelist th { white-space: nowrap }
+.imagelist .TablePager_col_links { background-color: #eeeeff }
+.imagelist .TablePager_col_img_description { white-space: normal }
+.imagelist th.TablePager_sort { background-color: #ccccff }
+
+.templatesUsed { margin-top: 1.5em; }
+
+.mw-summary-preview {
+	margin: 0.1em 0;
+}
+
+/* Convenience links on Special:Ipblocklist */
+p.mw-ipb-conveniencelinks {
+	font-size: 90%;
+	float: right;
+}
+
+/**
+ * Here is some stuff that's ACTUALLY COMMON TO ALL SKINS.
+ * When the day comes, it can be moved to a *real* common.css.
+ */
+.mw-plusminus-null { color: #aaa; }
+.texvc { direction: ltr; unicode-bidi: embed; }
+/* Stop floats from intruding into edit area in previews */
+#toolbar, #wpTextbox1 { clear: both; }
+
+.MediaTransformError {
+	background-color: #ccc;
+	padding: 0.1em;
+}
+.MediaTransformError td {
+	text-align: center;
+	vertical-align: middle;
+	font-size: 90%;
+}
+
+.news .date { font-weight: bold; }
+
+</style>
+
+
+<!-- Served in 0.046 secs. --></body></html>
